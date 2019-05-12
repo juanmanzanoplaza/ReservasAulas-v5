@@ -5,130 +5,135 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Clase que nos permite leer datos por teclado asegurándose
- * que el tipo de dato introducido es compatible con el esperado.
+ * Clase que nos permite leer datos por teclado asegur�ndose que el tipo de dato
+ * introducido es compatible con el esperado.
  * 
  * @author pepino
  */
 public class Entrada {
-	
+
 	/**
-	 * Constructor privado para evitar que java genere el suyo
-	 * por defecto y así evitar que se puedan instanciar objetos
+	 * Constructor privado para evitar que java genere el suyo por defecto y as�
+	 * evitar que se puedan instanciar objetos
 	 */
 	private Entrada() {
 		// No se permiten instanciar objetos de esta clase
 	}
-	
+
 	/**
-	 * Método estático que lee una cadena por teclado
-	 * @return la cadena leída
+	 * M�todo est�tico que lee una cadena por teclado
+	 * 
+	 * @return la cadena le�da
 	 */
 	public static String cadena() {
-            String valor = "";
-            InputStreamReader flujo = new InputStreamReader(System.in);
-            BufferedReader teclado = new BufferedReader(flujo);
-            try {
-                    valor = teclado.readLine();
-            } catch (IOException e) {
-                    System.out.print("Error de Entrada/Salida. Inténtalo de nuevo: ");
-            }
-            return valor;
+		String valor = "";
+		InputStreamReader flujo = new InputStreamReader(System.in);
+		BufferedReader teclado = new BufferedReader(flujo);
+		try {
+			valor = teclado.readLine();
+		} catch (IOException e) {
+			System.out.print("Error de Entrada/Salida. Inténtalo de nuevo: ");
+		}
+		return valor;
 	}
 
 	/**
-	 * Método estático que lee un entero por teclado y se asegura
-	 * que el valor introducido es compatible con un entero
-	 * @return el entero leído
+	 * M�todo est�tico que lee un entero por teclado y se asegura que el valor
+	 * introducido es compatible con un entero
+	 * 
+	 * @return el entero le�do
 	 */
 	public static int entero() {
-            int valor = 0;
-            boolean leido = false;
-            do {
-                    try {
-                            valor = Integer.parseInt(cadena());
-                            leido = true;
-                    } catch (NumberFormatException e) {
-                            System.out.print("ERROR: Esperaba un entero. Inténtalo de nuevo: ");
-                    }
-            } while (!leido);
-            return valor;
+		int valor = 0;
+		boolean leido = false;
+		do {
+			try {
+				valor = Integer.parseInt(cadena());
+				leido = true;
+			} catch (NumberFormatException e) {
+				System.out.print("ERROR: Esperaba un entero. Inténtalo de nuevo: ");
+			}
+		} while (!leido);
+		return valor;
 	}
-	
+
 	/**
-	 * Método estático que lee un entero largo (long) por teclado y se asegura
-	 * que el valor introducido es compatible con un entero largo
-	 * @return el entero largo leído
+	 * M�todo est�tico que lee un entero largo (long) por teclado y se asegura que
+	 * el valor introducido es compatible con un entero largo
+	 * 
+	 * @return el entero largo le�do
 	 */
 	public static long enteroLargo() {
-            long valor = 0;
-            boolean leido = false;
-            do {
-                    try {
-                            valor = Long.parseLong(cadena());
-                            leido = true;
-                    } catch (NumberFormatException e) {
-                            System.out.print("ERROR: Esperaba un entero largo. Inténtalo de nuevo: ");
-                    }
-            } while (!leido);
-            return valor;
+		long valor = 0;
+		boolean leido = false;
+		do {
+			try {
+				valor = Long.parseLong(cadena());
+				leido = true;
+			} catch (NumberFormatException e) {
+				System.out.print("ERROR: Esperaba un entero largo. Inténtalo de nuevo: ");
+			}
+		} while (!leido);
+		return valor;
 	}
-	
+
 	/**
-	 * Método estático que lee un real (float) por teclado y se asegura
-	 * que el valor introducido es compatible con un real
-	 * @return el real leído
+	 * M�todo est�tico que lee un real (float) por teclado y se asegura que el valor
+	 * introducido es compatible con un real
+	 * 
+	 * @return el real le�do
 	 */
 	public static float real() {
-            float valor = 0;
-            boolean leido = false;
-            do {
-                    try {
-                            valor = Float.parseFloat(cadena());
-                            leido = true;
-                    } catch (NumberFormatException e) {
-                            System.out.print("ERROR: Esperaba un real. Inténtalo de nuevo: ");
-                    }
-            } while (!leido);
-            return valor;
+		float valor = 0;
+		boolean leido = false;
+		do {
+			try {
+				valor = Float.parseFloat(cadena());
+				leido = true;
+			} catch (NumberFormatException e) {
+				System.out.print("ERROR: Esperaba un real. Inténtalo de nuevo: ");
+			}
+		} while (!leido);
+		return valor;
 	}
-	
+
 	/**
-	 * Método estático que lee un real de doble precisión (double) 
-	 * por teclado y se asegura que el valor introducido es compatible 
-	 * con un real de doble precisión
-	 * @return el real de doble precisión leído
+	 * M�todo est�tico que lee un real de doble precisi�n (double) por teclado y se
+	 * asegura que el valor introducido es compatible con un real de doble precisi�n
+	 * 
+	 * @return el real de doble precisi�n le�do
 	 */
 	public static double realDoble() {
-            double valor = 0;
-            boolean leido = false;
-            do {
-                    try {
-                            valor = Double.parseDouble(cadena());
-                            leido = true;
-                    } catch (NumberFormatException e) {
-                            System.out.print("ERROR: Esperaba un real de doble precisión. Inténtalo de nuevo: ");
-                    }
-            } while (!leido);
-            return valor;
+		double valor = 0;
+		boolean leido = false;
+		do {
+			try {
+				valor = Double.parseDouble(cadena());
+				leido = true;
+			} catch (NumberFormatException e) {
+				System.out.print("ERROR: Esperaba un real de doble precisión. Inténtalo de nuevo: ");
+			}
+		} while (!leido);
+		return valor;
 	}
-	
+
 	/**
-	 * Método estático que lee un caracter por teclado y se asegura
-	 * que el valor introducido es compatible con un caracter
-	 * @return el caracter leído
+	 * Método est�tico que lee un caracter por teclado y se asegura que el valor
+	 * introducido es compatible con un caracter
+	 * 
+	 * @return el caracter le�do
 	 */
 	public static char caracter() {
-            String valor = "";
-            boolean leido = false;
-            do {
-                    valor = cadena();
-                    if (valor.length() == 1)
-                            leido = true;
-                    else 
-                            System.out.print("ERROR: Esperaba un caracter. Inténtalo de nuevo: ");
-            } while (!leido);
-            return valor.charAt(0);
+		String valor = "";
+		boolean leido = false;
+		do {
+			valor = cadena();
+			if (valor.length() == 1)
+				leido = true;
+			else
+				System.out.print("ERROR: Esperaba un caracter. Inténtalo de nuevo: ");
+		} while (!leido);
+		return valor.charAt(0);
 	}
 
 }
