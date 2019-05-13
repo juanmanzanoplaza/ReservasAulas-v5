@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.Observable;
 import java.util.ResourceBundle;
 import javax.naming.OperationNotSupportedException;
 
@@ -17,6 +18,7 @@ import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Pe
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Tramo;
 import org.iesalandalus.programacion.reservasaulas.vista.iugrafica.utilidades.Dialogos;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -33,6 +35,8 @@ import javafx.util.Callback;
 public class ControladorInsertarReserva implements Initializable {
 
 	private IControladorReservasAulas controladorMVC;
+
+	private ObservableList<Reserva> reservas;
 
 	@FXML private TextField tfAula;
 	@FXML private TextField tfProfesor;
@@ -57,10 +61,25 @@ public class ControladorInsertarReserva implements Initializable {
 		inicializaCalendario();
 		agrupaRbTipoPermanencia();
 		agrupaRbTipoTramo();
+		rbManana.setVisible(false);
+		rbTarde.setVisible(false);
+		lbTramo.setVisible(false);
+	}
+	
+	public void setAula(Aula aula) {
+		tfAula.setText(aula.getNombre());
+	}
+	
+	public void setProfesor(Profesor profesor) {
+		tfProfesor.setText(profesor.getNombre());
 	}
 
 	public void setControladorMVC(IControladorReservasAulas controlador) {
 		controladorMVC = controlador;
+	}
+
+	public void setReservas(ObservableList<Reserva> reservas) {
+		this.reservas = reservas;
 	}
 
 	public void inicializaCalendario() {
@@ -72,8 +91,8 @@ public class ControladorInsertarReserva implements Initializable {
 					@Override
 					public void updateItem(LocalDate item, boolean empty) {
 						super.updateItem(item, empty);
-
-						if(item.isBefore(LocalDate.now().plusMonths(1))) {
+						LocalDate mesSiguiente = LocalDate.now().plusMonths(1);
+						if(item.isBefore(LocalDate.of(mesSiguiente.getYear(), mesSiguiente.getMonth(), 1))) {
 							setDisable(true);
 							setStyle("-fx-background-color: #C9C9C9;");
 						}
@@ -83,6 +102,7 @@ public class ControladorInsertarReserva implements Initializable {
 
 		};
 		dpDia.setDayCellFactory(dayCellFactory);
+		
 	}
 
 	public void agrupaRbTipoPermanencia() {
@@ -122,10 +142,10 @@ public class ControladorInsertarReserva implements Initializable {
 		boolean error = false;
 		Reserva reserva = null;
 		LocalTime hora = null;
-		LocalDate dia = null;
+		String dia = null;
 
 		try {
-			dia = LocalDate.parse(dpDia.getPromptText(), ER_DIA);
+			dia = dpDia.getValue().format(ER_DIA);//LocalDate.parse(dpDia.getValue().format(ER_DIA), ER_DIA);
 		} catch (DateTimeParseException e) {
 			Dialogos.mostrarDialogoError("Insertar Reserva", "El formato del dia no es correcto.");
 			error = true;
@@ -153,6 +173,7 @@ public class ControladorInsertarReserva implements Initializable {
 						reserva = new Reserva(new Profesor(tfProfesor.getText(), CORREO_VALIDO), new Aula(tfAula.getText(), 10), new PermanenciaPorTramo(dia.toString(), Tramo.TARDE));
 				}
 				controladorMVC.realizarReserva(reserva);
+				reservas.add(reserva);
 				escenario.close();
 
 			} catch (OperationNotSupportedException | IllegalArgumentException | NullPointerException e) {

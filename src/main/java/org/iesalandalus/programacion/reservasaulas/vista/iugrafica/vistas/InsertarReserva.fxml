@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.reservasaulas.vista.iugrafica.controladoresvistas.ControladorInsertarReserva">
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FCD7AA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -107,11 +107,11 @@
             </GridPane>
             <HBox alignment="CENTER" prefHeight="80.0" prefWidth="600.0" spacing="20.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="90.0" text="Aceptar">
+                  <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="90.0" onAction="#aceptar" text="Aceptar">
                      <font>
                         <Font name="Ink Free" size="18.0" />
                      </font></Button>
-                  <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="90.0" text="Cancelar">
+                  <Button mnemonicParsing="false" prefHeight="49.0" prefWidth="90.0" onAction="#cancelar" text="Cancelar">
                      <font>
                         <Font name="Ink Free" size="18.0" />
                      </font></Button>

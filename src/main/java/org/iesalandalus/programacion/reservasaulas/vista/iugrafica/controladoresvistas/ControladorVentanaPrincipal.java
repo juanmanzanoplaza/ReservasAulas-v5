@@ -2,6 +2,7 @@ package org.iesalandalus.programacion.reservasaulas.vista.iugrafica.controladore
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,7 +12,12 @@ import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Aula;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Reserva;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Permanencia;
+import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.PermanenciaPorHora;
+import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.PermanenciaPorTramo;
+import org.iesalandalus.programacion.reservasaulas.vista.iugrafica.utilidades.Dialogos;
 
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -20,6 +26,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -34,15 +42,19 @@ public class ControladorVentanaPrincipal implements Initializable{
 	//TableView y columnas que listan las aulas y su menú contextual
 	@FXML private TableView<Aula> tvAulas;
 	@FXML private TableColumn<Aula, String> tcNombreAulas;
-	@FXML private TableColumn<Aula, Integer> tcPuestosAulas;
-	//@FXML private ContextMenu cmAulas;
+	@FXML private TableColumn<Aula, String> tcPuestosAulas;
+	@FXML private ContextMenu cmAulas;
+	@FXML private MenuItem miInsertarAula;
+	@FXML private MenuItem miReservarAula;
+	@FXML private MenuItem miBorrarAula;
 	//TableView y columnas que listan las reservas de un aula seleccionada y su menú contextual
 	@FXML private TableView<Reserva> tvReservasAulas;
-	@FXML private TableColumn<Profesor, String> tcProfesorAulas;
-	@FXML private TableColumn<Permanencia, String> tcDiaAulas;
-	@FXML private TableColumn<Permanencia, String> tcHoraAulas;
-	@FXML private TableColumn<Permanencia, String> tcTramoAulas;
-	//@FXML private ContextMenu cmReservasAula;
+	@FXML private TableColumn<Reserva, String> tcProfesorAulas;
+	@FXML private TableColumn<Reserva, String> tcDiaAulas;
+	@FXML private TableColumn<Reserva, String> tcHoraTramoAulas;
+	@FXML private TableColumn<Reserva, String> tcPuntosAulas;
+	@FXML private ContextMenu cmReservasAula;
+	@FXML private MenuItem miAnularReservaAula;
 
 	//Pestaña Profesores
 	//TableView y columnas que listan los profesores y su menú contextual
@@ -50,28 +62,39 @@ public class ControladorVentanaPrincipal implements Initializable{
 	@FXML private TableColumn<Profesor, String> tcNombreProfesores;
 	@FXML private TableColumn<Profesor, String> tcCorreoProfesores;
 	@FXML private TableColumn<Profesor, String> tcTelefonoProfesores;
-	//@FXML private ContextMenu cmProfesores;
+	@FXML private ContextMenu cmProfesores;
+	@FXML private MenuItem miInsertarProfesor;
+	@FXML private MenuItem miProfesorReserva;
+	@FXML private MenuItem miBorrarProfesor;
 	//TableView y columnas que listan las reservas de un profesor seleccionado y su menú contextual
 	@FXML private TableView<Reserva> tvReservasProfesores;
-	@FXML private TableColumn<Aula, String> tcAulaProfesores;
-	@FXML private TableColumn<Permanencia, String> tcDiaProfesores;
-	@FXML private TableColumn<Permanencia, String> tcHoraProfesores;
-	@FXML private TableColumn<Permanencia, String> tcTramoProfesores;
-	//@FXML private ContextMenu cmReservasProfesor;
+	@FXML private TableColumn<Reserva, String> tcAulaProfesores;
+	@FXML private TableColumn<Reserva, String> tcDiaProfesores;
+	@FXML private TableColumn<Reserva, String> tcHoraTramoProfesores;
+	@FXML private TableColumn<Reserva, String> tcPuntosProfesores;
+	@FXML private ContextMenu cmReservasProfesor;
+	@FXML private MenuItem miAnularReservaProfesor;
 
 	//Pestaña Reservas
 	//TableView y columnas que listan las reservas y su menú contextual
 	@FXML private TableView<Reserva> tvReservas;
-	@FXML private TableColumn<Aula, String> tcAulaReservas;
-	@FXML private TableColumn<Profesor, String> tcProfesorReservas;
-	@FXML private TableColumn<Permanencia, String> tcDiaReservas;
-	@FXML private TableColumn<Permanencia, String> tcHoraReservas;
-	@FXML private TableColumn<Permanencia,String> tcTramoReservas;
-	//@FXML private ContextMenu cmReservas;
+	@FXML private TableColumn<Reserva, String> tcAulaReservas;
+	@FXML private TableColumn<Reserva, String> tcProfesorReservas;
+	@FXML private TableColumn<Reserva, String> tcDiaReservas;
+	@FXML private TableColumn<Reserva, String> tcHoraTramoReservas;
+	@FXML private TableColumn<Reserva, String> tcPuntosReservas;
+	@FXML private ContextMenu cmReservas;
+	@FXML private MenuItem miRealizarReserva;
+	@FXML private MenuItem miAnularReservaReservas;
 
 	private ObservableList<Aula> aulas = FXCollections.observableArrayList();
 	private ObservableList<Profesor> profesores = FXCollections.observableArrayList();
 	private ObservableList<Reserva> reservas = FXCollections.observableArrayList();
+	private ObservableList<Reserva> reservasAula = FXCollections.observableArrayList();
+	private ObservableList<Reserva> reservasProfesor = FXCollections.observableArrayList();
+
+	private static final DateTimeFormatter FORMATO_DIA = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+	private static final DateTimeFormatter FORMATO_HORA = DateTimeFormatter.ofPattern("HH:mm");
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -81,32 +104,38 @@ public class ControladorVentanaPrincipal implements Initializable{
 	}
 
 	private void setAtributosTablasAula() {
-		tcNombreAulas.setCellValueFactory(new PropertyValueFactory<Aula,String>("nombre"));
-		tcPuestosAulas.setCellValueFactory(new PropertyValueFactory<Aula,Integer>("puestos"));
-		tcProfesorAulas.setCellValueFactory(new PropertyValueFactory<Profesor,String>("nombre"));
-		tcDiaAulas.setCellValueFactory(new PropertyValueFactory<Permanencia,String>("dia"));
-		tcHoraAulas.setCellValueFactory(new PropertyValueFactory<Permanencia,String>("hora"));
-		tcHoraAulas.setCellValueFactory(new PropertyValueFactory<Permanencia,String>("tramo"));
-
-
+		tcNombreAulas.setCellValueFactory(Aula -> new SimpleStringProperty(Aula.getValue().getNombre()));
+		tcPuestosAulas.setCellValueFactory(Aula -> new SimpleStringProperty(Integer.toString(Aula.getValue().getPuestos())));
+		tcProfesorAulas.setCellValueFactory(Reserva -> new SimpleStringProperty(Reserva.getValue().getProfesor().getNombre()));
+		tcDiaAulas.setCellValueFactory(Reserva -> new SimpleStringProperty(FORMATO_DIA.format(Reserva.getValue().getPermanencia().getDia())));
+		tcHoraTramoAulas.setCellValueFactory(Reserva -> new SimpleStringProperty(getPermanenciaString(Reserva.getValue())));
+		tcPuestosAulas.setCellValueFactory(Reserva -> new SimpleStringProperty(Float.toString(Reserva.getValue().getPuntos())));
 	}
 
 	private void setAtributosTablasProfesor() {
-		tcNombreProfesores.setCellValueFactory(new PropertyValueFactory<Profesor,String>("nombre"));
-		tcCorreoProfesores.setCellValueFactory(new PropertyValueFactory<Profesor,String>("correo"));
-		tcTelefonoProfesores.setCellValueFactory(new PropertyValueFactory<Profesor,String>("telefono"));
-		tcAulaProfesores.setCellValueFactory(new PropertyValueFactory<Aula,String>("nombre"));
-		tcDiaProfesores.setCellValueFactory(new PropertyValueFactory<Permanencia,String>("dia"));
-		tcHoraProfesores.setCellValueFactory(new PropertyValueFactory<Permanencia,String>("hora"));
-		tcTramoProfesores.setCellValueFactory(new PropertyValueFactory<Permanencia,String>("tramo"));
+		tcNombreProfesores.setCellValueFactory(Profesor -> new SimpleStringProperty(Profesor.getValue().getNombre()));
+		tcCorreoProfesores.setCellValueFactory(Profesor -> new SimpleStringProperty(Profesor.getValue().getCorreo()));
+		tcTelefonoProfesores.setCellValueFactory(Profesor -> new SimpleStringProperty(Profesor.getValue().getTelefono()));
+		tcAulaProfesores.setCellValueFactory(Reserva -> new SimpleStringProperty(Reserva.getValue().getAula().getNombre()));
+		tcDiaProfesores.setCellValueFactory(Reserva -> new SimpleStringProperty(FORMATO_DIA.format(Reserva.getValue().getPermanencia().getDia())));
+		tcHoraTramoProfesores.setCellValueFactory(Reserva -> new SimpleStringProperty(getPermanenciaString(Reserva.getValue())));
+		tcPuntosProfesores.setCellValueFactory(Reserva -> new SimpleStringProperty(Float.toString(Reserva.getValue().getPuntos())));
 	}
 
 	private void setAtributosTablasReservas() {
-		tcAulaReservas.setCellValueFactory(new PropertyValueFactory<Aula,String>("nombre"));
-		tcProfesorReservas.setCellValueFactory(new PropertyValueFactory<Profesor, String>("nombre"));
-		tcDiaReservas.setCellValueFactory(new PropertyValueFactory<Permanencia,String>("dia"));
-		tcHoraReservas.setCellValueFactory(new PropertyValueFactory<Permanencia,String>("hora"));
-		tcTramoReservas.setCellValueFactory(new PropertyValueFactory<Permanencia,String>("tramo"));
+		tcAulaReservas.setCellValueFactory(Reserva -> new SimpleStringProperty(Reserva.getValue().getAula().getNombre()));
+		tcProfesorReservas.setCellValueFactory(Reserva -> new SimpleStringProperty(Reserva.getValue().getProfesor().getNombre()));
+		tcDiaReservas.setCellValueFactory(Reserva -> new SimpleStringProperty(FORMATO_DIA.format(Reserva.getValue().getPermanencia().getDia())));
+		tcHoraTramoReservas.setCellValueFactory(Reserva -> new SimpleStringProperty(getPermanenciaString(Reserva.getValue())));
+		tcPuntosReservas.setCellValueFactory(Reserva -> new SimpleStringProperty(Float.toString(Reserva.getValue().getPuntos())));
+	}
+
+	private String getPermanenciaString(Reserva reserva) {
+		Permanencia permanencia = reserva.getPermanencia();
+		if(permanencia instanceof PermanenciaPorTramo)
+			return ((PermanenciaPorTramo) permanencia).getTramo().toString();
+		else
+			return ((PermanenciaPorHora) permanencia).getHora().format(FORMATO_HORA);
 	}
 
 	public void setAulas() {
@@ -155,9 +184,122 @@ public class ControladorVentanaPrincipal implements Initializable{
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../vistas/InsertarProfesor.fxml"));
 			Parent raiz = loader.load();
 			ControladorInsertarProfesor controlador = loader.getController();
-
+			controlador.setControladorMVC(controladorMVC);
+			controlador.setProfesores(profesores);
+			Scene escena = new Scene(raiz);
+			Stage escenario = new Stage();
+			escenario.initModality(Modality.APPLICATION_MODAL);
+			escenario.setScene(escena);
+			escenario.setTitle("Insertar Profesor");
+			escenario.showAndWait();
 		} catch (IOException e) {
 			Logger.getLogger(ControladorVentanaPrincipal.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+
+	@FXML private void insertarReserva(ActionEvent event) {
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../vistas/InsertarReserva.fxml"));
+			Parent raiz = loader.load();
+			ControladorInsertarReserva controlador = loader.getController();
+			controlador.setControladorMVC(controladorMVC);
+			controlador.setReservas(reservas);
+			Scene escena = new Scene(raiz);
+			Stage escenario = new Stage();
+			escenario.initModality(Modality.APPLICATION_MODAL);
+			escenario.setScene(escena);
+			escenario.setTitle("Insertar reserva");
+			escenario.showAndWait();
+		} catch (IOException e) {
+			Logger.getLogger(ControladorVentanaPrincipal.class.getName()).log(Level.SEVERE, null, e);
+		}
+	}
+
+	@FXML private void borrarAula(ActionEvent event) {
+		Aula aula = null;
+		try {
+			aula = tvAulas.getSelectionModel().getSelectedItem();
+			if(aula!=null && Dialogos.mostrarDialogoConfirmaion("Borrar", "¿Estás seguro de que quieres borrar el aula?", null)) {
+				controladorMVC.borrarAula(aula);
+				aulas.remove(aula);
+				Dialogos.mostrarDialogoInformacion("Borrar aula", "Aula borrada satisfactoriamente", null);
+			}
+		} catch (Exception e) {
+			Dialogos.mostrarDialogoError("Borrar aula", e.getMessage());
+		}
+	}
+
+	@FXML private void borrarProfesor(ActionEvent event) {
+		Profesor profesor = null;
+		try {
+			profesor = tvProfesores.getSelectionModel().getSelectedItem();
+			if(profesor!=null && Dialogos.mostrarDialogoConfirmaion("Borrar", "¿Estás seguro de que quieres borrar el profesor?", null)) {
+				controladorMVC.borrarProfesor(profesor);
+				profesores.remove(profesor);
+				Dialogos.mostrarDialogoInformacion("Borrar profesor", "Profesor borrado satisfactoriamente", null);
+			}
+		} catch (Exception e) {
+			Dialogos.mostrarDialogoError("Borrar profesor", e.getMessage());
+		}
+	}
+
+	@FXML private void anularReserva(ActionEvent event) {
+		Reserva reserva = null;
+		try {
+			reserva = tvReservas.getSelectionModel().getSelectedItem();
+			if(reserva!=null && Dialogos.mostrarDialogoConfirmaion("Anular reserva", "¿Estás seguro de que quieres anular la reserva?", null)) {
+				controladorMVC.anularReserva(reserva);
+				reservas.remove(reserva);
+				Dialogos.mostrarDialogoInformacion("Anular reserva", "Reserva anulada satisfactoriamente", null);
+			}
+		} catch (Exception e) {
+			Dialogos.mostrarDialogoError("Anular reserva", e.getMessage());
+		}
+	}
+
+	@FXML private void reservarAula(ActionEvent event) {
+		Aula aula = null;
+		try {
+			aula = tvAulas.getSelectionModel().getSelectedItem();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../vistas/InsertarReserva.fxml"));
+			Parent raiz = loader.load();
+			ControladorInsertarReserva controlador = loader.getController();
+			controlador.setControladorMVC(controladorMVC);
+			if(aula!=null)
+				controlador.setAula(aula);
+			Scene escena = new Scene(raiz);
+			Stage escenario = new Stage();
+			escenario.initModality(Modality.APPLICATION_MODAL);
+			escenario.setScene(escena);
+			escenario.setTitle("Insertar reserva");
+			escenario.showAndWait();
+		} catch (IOException e) {
+			Logger.getLogger(ControladorVentanaPrincipal.class.getName()).log(Level.SEVERE, null, e);
+		} catch (Exception e) {
+			Dialogos.mostrarDialogoError("Reservar aula", e.getMessage());
+		}
+	}
+
+	@FXML private void profesorReserva(ActionEvent event) {
+		Profesor profesor = null;
+		try {
+			profesor = tvProfesores.getSelectionModel().getSelectedItem();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../vistas/InsertarReserva.fxml"));
+			Parent raiz = loader.load();
+			ControladorInsertarReserva controlador = loader.getController();
+			controlador.setControladorMVC(controladorMVC);
+			if(profesor!=null)
+				controlador.setProfesor(profesor);
+			Scene escena = new Scene(raiz);
+			Stage escenario = new Stage();
+			escenario.initModality(Modality.APPLICATION_MODAL);
+			escenario.setScene(escena);
+			escenario.setTitle("Insertar reserva");
+			escenario.showAndWait();
+		} catch (IOException e) {
+			Logger.getLogger(ControladorVentanaPrincipal.class.getName()).log(Level.SEVERE, null, e);
+		} catch (Exception e) {
+			Dialogos.mostrarDialogoError("Profesor reserva", e.getMessage());
 		}
 	}
 }

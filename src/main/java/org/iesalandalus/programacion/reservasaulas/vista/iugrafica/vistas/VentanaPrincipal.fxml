@@ -11,11 +11,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" spacing="10.0" style="-fx-background-color: FCB054;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" spacing="10.0" style="-fx-background-color: FCB054;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.reservasaulas.vista.iugrafica.controladoresvistas.ControladorVentanaPrincipal">
    <children>
       <TabPane prefHeight="400.0" prefWidth="500.0" style="-fx-background-color: FCB054; -fx-border-color: FCB054;" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="100.0">
         <tabs>
-          <Tab fx:id="tabAulas" closable="false" text="Aulas">
+          <Tab closable="false" text="Aulas">
             <content>
 	<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="350.0" prefWidth="640.0">
 		<children>
@@ -29,9 +29,9 @@
 						<contextMenu>
 							<ContextMenu fx:id="cmAulas">
 								<items>
-									<MenuItem mnemonicParsing="false" text="Insertar aula" />
-									<MenuItem mnemonicParsing="false" text="Reservar aula" />
-									<MenuItem mnemonicParsing="false" text="Borrar aula" />
+									<MenuItem fx:id="miInsertarAula" mnemonicParsing="false" onAction="#insertarAula" text="Insertar aula" />
+									<MenuItem fx:id="miReservarAula" mnemonicParsing="false" onAction="#reservarAula" text="Reservar aula" />
+									<MenuItem fx:id="miBorrarAula" mnemonicParsing="false" onAction="#borrarAula" text="Borrar aula" />
 								</items>
 							</ContextMenu>
 						</contextMenu>
@@ -40,13 +40,13 @@
 						<columns>
                                   <TableColumn fx:id="tcProfesorAulas" prefWidth="75.0" text="Profesor" />
                                     <TableColumn fx:id="tcDiaAulas" prefWidth="75.0" text="Día" />
-                                    <TableColumn fx:id="tcHoraAulas" prefWidth="75.0" text="Hora" />
-                                    <TableColumn fx:id="tcTramoAulas" prefWidth="75.0" text="Tramo" />
+                                    <TableColumn fx:id="tcHoraTramoAulas" prefWidth="75.0" text="Hora/Tramo" />
+                                    <TableColumn fx:id="tcPuntosAulas" prefWidth="75.0" text="Puntos" />
                                 </columns>
                                  <contextMenu>
                                     <ContextMenu fx:id="cmReservasAula">
                                       <items>
-                                        <MenuItem mnemonicParsing="false" text="Anular reserva" />
+                                        <MenuItem fx:id="miAnularReservaAula" mnemonicParsing="false" text="Anular reserva" />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>
@@ -64,7 +64,7 @@
                   </ImageView>
                </graphic>
           </Tab>
-          <Tab fx:id="tabProfesores" closable="false" text="Profesores">
+          <Tab closable="false" text="Profesores">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -79,9 +79,9 @@
                                  <contextMenu>
                                     <ContextMenu fx:id="cmProfesores">
                                       <items>
-                                        <MenuItem mnemonicParsing="false" text="Insertar profesor" />
-                                          <MenuItem mnemonicParsing="false" text="Profesor reserva..." />
-                                          <MenuItem mnemonicParsing="false" text="Borrar profesor" />
+                                        <MenuItem fx:id="miInsertarProfesor" mnemonicParsing="false" onAction="#insertarProfesor" text="Insertar profesor" />
+                                          <MenuItem fx:id="miProfesorReserva" mnemonicParsing="false" onAction="#profesorReserva" text="Profesor reserva..." />
+                                          <MenuItem fx:id="miBorrarProfesor" mnemonicParsing="false" onAction="#borrarProfesor" text="Borrar profesor" />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>
@@ -90,13 +90,13 @@
                                 <columns>
                                   <TableColumn fx:id="tcAulaProfesores" prefWidth="75.0" text="Aula" />
                                   <TableColumn fx:id="tcDiaProfesores" prefWidth="75.0" text="Día" />
-                                    <TableColumn fx:id="tcHoraProfesores" prefWidth="75.0" text="Hora" />
-                                    <TableColumn fx:id="tcTramoProfesores" prefWidth="75.0" text="Tramo" />
+                                    <TableColumn fx:id="tcHoraTramoProfesores" prefWidth="75.0" text="Hora/Tramo" />
+                                    <TableColumn fx:id="tcPuntosProfesores" prefWidth="75.0" text="Puntos" />
                                 </columns>
                                 <contextMenu>
                                     <ContextMenu fx:id="cmReservasProfesor">
                                       <items>
-                                        <MenuItem mnemonicParsing="false" text="Anular reserva" />
+                                        <MenuItem fx:id="miAnularReservaProfesor" mnemonicParsing="false" text="Anular reserva" />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>
@@ -107,13 +107,13 @@
                   </AnchorPane>
             </content>
                <graphic>
-                  <ImageView fx:id="tabProfesores" fitHeight="39.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="39.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../imagenes/profesor.jpg" />
                      </image></ImageView>
                </graphic>
           </Tab>
-            <Tab fx:id="tabReservas" closable="false" text="Reservas">
+            <Tab closable="false" text="Reservas">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -124,14 +124,14 @@
                                   <TableColumn fx:id="tcAulaReservas" prefWidth="75.0" text="Aula" />
                                   <TableColumn fx:id="tcProfesorReservas" prefWidth="75.0" text="Profesor" />
                                     <TableColumn fx:id="tcDiaReservas" prefWidth="75.0" text="Día" />
-                                    <TableColumn fx:id="tcHoraReservas" prefWidth="75.0" text="Hora" />
-                                    <TableColumn fx:id="tcTramoReservas" prefWidth="75.0" text="Tramo" />
+                                    <TableColumn fx:id="tcHoraTramoReservas" prefWidth="75.0" text="Hora/Tramo" />
+                                    <TableColumn fx:id="tcPuntosReservas" prefWidth="75.0" text="Puntos" />
                                 </columns>
                                 <contextMenu>
                                     <ContextMenu fx:id="cmReservas">
                                       <items>
-                                        <MenuItem mnemonicParsing="false" text="Realizar reserva" />
-                                          <MenuItem mnemonicParsing="false" text="Anular reserva" />
+                                        <MenuItem fx:id="miRealizarReserva" mnemonicParsing="false" onAction="#insertarReserva" text="Realizar reserva" />
+                                          <MenuItem fx:id="miAnularReservaReservas" mnemonicParsing="false" onAction="#anularReserva" text="Anular reserva" />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>

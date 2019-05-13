@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.iesalandalus.programacion.reservasaulas.vista.iugrafica.controladoresvistas.ControladorInsertarAula">
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: FCD7AA;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -40,7 +40,7 @@
                      </font>
                   </Label>
                   <TextField fx:id="tfNombre" prefHeight="40.0" prefWidth="300.0" GridPane.columnIndex="1" />
-                  <TextField fx:id="tfPuestos" onKeyPressed="#comprobarPuestos" prefHeight="40.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="tfPuestos" prefHeight="40.0" prefWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                   <Label alignment="CENTER_RIGHT" prefHeight="40.0" prefWidth="300.0" text="Puestos:" GridPane.rowIndex="1">
                      <font>
                         <Font name="Ink Free" size="18.0" />

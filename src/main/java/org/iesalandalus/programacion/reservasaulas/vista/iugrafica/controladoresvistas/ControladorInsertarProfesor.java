@@ -21,8 +21,8 @@ import javafx.stage.Stage;
 
 public class ControladorInsertarProfesor implements Initializable {
 
-	private static final String ER_CORREO = "^[a-z0-9]+(\\.[a-z0-9]+)*@[a-z]+(\\.[a-z]+)*(\\.[a-z]{1,4})$";
-	private static final String ER_TELEFONO = "^[69][0-9]{8}$";
+	//private static final String ER_CORREO = "^[a-z0-9]+(\\.[a-z0-9]+)*@[a-z]+(\\.[a-z]+)*(\\.[a-z]{1,4})$";
+	//private static final String ER_TELEFONO = "^[69][0-9]{8}$";
 
 	private IControladorReservasAulas controladorMVC;
 
@@ -49,8 +49,12 @@ public class ControladorInsertarProfesor implements Initializable {
 
 		try {
 			Stage escenario = (Stage)((Node) event.getSource()).getScene().getWindow();
-			profesor = new Profesor(tfNombre.getText(), tfCorreo.getText(), tfTelefono.getText());
+			if(tfTelefono.getText().equals(""))
+				profesor = new Profesor(tfNombre.getText(), tfCorreo.getText());
+			else
+				profesor = new Profesor(tfNombre.getText(), tfCorreo.getText(), tfTelefono.getText());
 			controladorMVC.insertarProfesor(profesor);
+			profesores.add(profesor);
 			Dialogos.mostrarDialogoInformacion("Nuevo Profesor", "Profesor insertado correctamente");
 			escenario.close();
 		} catch (IllegalArgumentException | OperationNotSupportedException e) {
@@ -67,7 +71,7 @@ public class ControladorInsertarProfesor implements Initializable {
 			event.consume();
 	}
 
-	@FXML private void comprobarCorreo(ActionEvent event) {
+	/**@FXML private void comprobarCorreo(ActionEvent event) {
 		Matcher m = Pattern.compile(ER_CORREO).matcher(tfCorreo.getText());
 		if(!m.matches()) {
 			String nuevoValor = tfCorreo.getText();
@@ -81,6 +85,6 @@ public class ControladorInsertarProfesor implements Initializable {
 			String nuevoValor = tfTelefono.getText();
 			tfTelefono.setText(nuevoValor.substring(0, nuevoValor.length()-1));
 		}
-	}
+	}**/
 
 }

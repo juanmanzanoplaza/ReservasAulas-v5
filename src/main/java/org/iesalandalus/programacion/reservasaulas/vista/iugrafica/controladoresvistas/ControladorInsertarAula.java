@@ -21,8 +21,6 @@ import javafx.stage.Stage;
 
 public class ControladorInsertarAula implements Initializable {
 
-	private static final String ER_PUESTOS = "^[0-9]*$";
-
 	private IControladorReservasAulas controladorMVC;
 
 	private ObservableList<Aula> aulas;
@@ -65,14 +63,6 @@ public class ControladorInsertarAula implements Initializable {
 			escenario.close();
 		else
 			event.consume();
-	}
-
-	@FXML private void comprobarPuestos(ActionEvent event) {
-		Matcher m = Pattern.compile(ER_PUESTOS).matcher(tfPuestos.getText());
-		if(!m.matches()) {
-			String nuevoValor = tfPuestos.getText();
-			tfPuestos.setText(nuevoValor.substring(0, nuevoValor.length()-1));
-		}
 	}
 
 }

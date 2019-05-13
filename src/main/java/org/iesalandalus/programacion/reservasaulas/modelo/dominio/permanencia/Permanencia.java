@@ -7,7 +7,7 @@ import java.time.format.DateTimeParseException;
 
 /**
  * Clase que representa el tiempo que es reservada un aula.
- * 
+ *
  * @see PermanenciaPorHora
  * @see PermanenciaPorTramo
  * @author Juan Antonio Manzano Plaza
@@ -31,7 +31,7 @@ public abstract class Permanencia implements Serializable {
 
 	/**
 	 * Constructor de la clase
-	 * 
+	 *
 	 * @param dia
 	 *            el d�a de la reserva
 	 * @throws IllegalArgumentException
@@ -43,7 +43,7 @@ public abstract class Permanencia implements Serializable {
 
 	/**
 	 * Constructor de la clase
-	 * 
+	 *
 	 * @param dia
 	 *            la fecha de la permanencia
 	 * @throws IllegalArgumentException
@@ -55,7 +55,7 @@ public abstract class Permanencia implements Serializable {
 
 	/**
 	 * M�todo get para el d�a de la reserva
-	 * 
+	 *
 	 * @return el d�a de la reserva
 	 */
 	public LocalDate getDia() {
@@ -64,7 +64,7 @@ public abstract class Permanencia implements Serializable {
 
 	/**
 	 * M�todo set para el d�a de la reserva
-	 * 
+	 *
 	 * @param dia
 	 *            la fecha de la reserva
 	 * @throws IllegalArgumentException
@@ -78,7 +78,7 @@ public abstract class Permanencia implements Serializable {
 
 	/**
 	 * M�todo set para el d�a de la reserva
-	 * 
+	 *
 	 * @param dia
 	 *            la fecha de la reserva
 	 * @throws IllegalArgumentException
@@ -97,28 +97,28 @@ public abstract class Permanencia implements Serializable {
 	/**
 	 * Obtiene la cantidad de puntos que cuesta reservar un aula durante una
 	 * permanencia determinada.
-	 * 
+	 *
 	 * @return la cantidad de puntos que cuesta la permanencia
 	 */
 	public abstract int getPuntos();
 
 	/**
 	 * Representa una permanencia como una cadena de caracteres
-	 * 
+	 *
 	 * @return la representaci�n de la permanencia
 	 */
 	public abstract String toString();
 
 	/**
 	 * M�todo hashCode de la clase. Sirve para diferenciar objetos
-	 * 
+	 *
 	 * @return el c�digo hash del objeto
 	 */
 	public abstract int hashCode();
 
 	/**
 	 * M�todo equals de la clase
-	 * 
+	 *
 	 * @return True si son iguales, False si no
 	 */
 	public abstract boolean equals(Object o);
