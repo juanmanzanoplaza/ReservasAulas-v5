@@ -105,7 +105,6 @@ public class ControladorVentanaPrincipal implements Initializable{
 
 	private void setAtributosTablasAula() {
 		tcNombreAulas.setCellValueFactory(Aula -> new SimpleStringProperty(Aula.getValue().getNombre()));
-
 		tcPuestosAulas.setCellValueFactory(Aula -> new SimpleStringProperty(Integer.toString(Aula.getValue().getPuestos())));
 		tcProfesorAulas.setCellValueFactory(Reserva -> new SimpleStringProperty(Reserva.getValue().getProfesor().getNombre()));
 		tcDiaAulas.setCellValueFactory(Reserva -> new SimpleStringProperty(FORMATO_DIA.format(Reserva.getValue().getPermanencia().getDia())));
@@ -174,6 +173,7 @@ public class ControladorVentanaPrincipal implements Initializable{
 			escenario.initModality(Modality.APPLICATION_MODAL);
 			escenario.setScene(escena);
 			escenario.setTitle("Insertar Aula");
+			//tvAulas.getSelectionModel().selectedItemProperty().addListener((ob, oldValue, newValue) -> filaSeleccionada(tvAulas.getSelectionModel().getSelectedItem()));
 			escenario.showAndWait();
 		} catch (IOException e) {
 			Logger.getLogger(ControladorVentanaPrincipal.class.getName()).log(Level.SEVERE, null, e);
@@ -303,4 +303,11 @@ public class ControladorVentanaPrincipal implements Initializable{
 			Dialogos.mostrarDialogoError("Profesor reserva", e.getMessage());
 		}
 	}
+	
+	/**private void filaSeleccionada(Aula aula) {
+		if(aula!=null) {
+			reservasAula.addAll(controladorMVC.getReservasAula(aula));
+			tvReservasAulas.setItems(reservasAula);
+		}
+	}**/
 }
