@@ -105,11 +105,12 @@ public class ControladorVentanaPrincipal implements Initializable{
 
 	private void setAtributosTablasAula() {
 		tcNombreAulas.setCellValueFactory(Aula -> new SimpleStringProperty(Aula.getValue().getNombre()));
+
 		tcPuestosAulas.setCellValueFactory(Aula -> new SimpleStringProperty(Integer.toString(Aula.getValue().getPuestos())));
 		tcProfesorAulas.setCellValueFactory(Reserva -> new SimpleStringProperty(Reserva.getValue().getProfesor().getNombre()));
 		tcDiaAulas.setCellValueFactory(Reserva -> new SimpleStringProperty(FORMATO_DIA.format(Reserva.getValue().getPermanencia().getDia())));
 		tcHoraTramoAulas.setCellValueFactory(Reserva -> new SimpleStringProperty(getPermanenciaString(Reserva.getValue())));
-		tcPuestosAulas.setCellValueFactory(Reserva -> new SimpleStringProperty(Float.toString(Reserva.getValue().getPuntos())));
+		tcPuntosAulas.setCellValueFactory(Reserva -> new SimpleStringProperty(Float.toString(Reserva.getValue().getPuntos())));
 	}
 
 	private void setAtributosTablasProfesor() {
