@@ -21,7 +21,7 @@ import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Aula;
  * @see Aula
  * @see ModeloReservasAulas
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  *
  */
 public class Aulas {
@@ -30,7 +30,7 @@ public class Aulas {
 	private List<Aula> coleccionAulas;
 
 	/**
-	 * Constructor por defecto. Inicializa la colecci髇.
+	 * Constructor por defecto. Inicializa la colecci贸n.
 	 */
 	public Aulas() {
 		coleccionAulas = new ArrayList<Aula>();
@@ -49,11 +49,11 @@ public class Aulas {
 	}
 
 	/**
-	 * Guarda en la colecci髇 actual de aulas los que hay en la recibida como
-	 * par醡etro
+	 * Guarda en la colecci贸n actual de aulas los que hay en la recibida como
+	 * par谩metro
 	 *
 	 * @param aulas
-	 *            la colecci髇 a copiar
+	 *            la colecci贸n a copiar
 	 * @throws IllegalArgumentException
 	 *             si se intenta copiar un conjunto de aulas nulas
 	 */
@@ -67,8 +67,8 @@ public class Aulas {
 	 * Realiza la copia en profundidad de cada profesor para evitar aliasing
 	 *
 	 * @param coleccionAulas
-	 *            la colecci髇 de aulas a copiar
-	 * @return una copia de la colecci髇
+	 *            la colecci贸n de aulas a copiar
+	 * @return una copia de la colecci贸n
 	 */
 	private List<Aula> copiaProfundaAulas(List<Aula> aulas) {
 		List<Aula> copia = new ArrayList<Aula>();
@@ -78,25 +78,25 @@ public class Aulas {
 	}
 
 	/**
-	 * Obtiene todas las aulas de la colecci髇 actual
+	 * Obtiene todas las aulas de la colecci贸n actual
 	 *
-	 * @return una copia de la colecci髇
+	 * @return una copia de la colecci贸n
 	 */
 	public List<Aula> getAulas() {
 		return copiaProfundaAulas(this.coleccionAulas);
 	}
 
 	/**
-	 * Obtiene el n鷐ero de aulas que existen en la colecci髇 actual
+	 * Obtiene el n煤mero de aulas que existen en la colecci贸n actual
 	 *
-	 * @return el n鷐ero de aulas
+	 * @return el n煤mero de aulas
 	 */
 	public int getNumAulas() {
 		return this.coleccionAulas.size();
 	}
 
 	/**
-	 * Guarda un aula en la colecci髇
+	 * Guarda un aula en la colecci贸n
 	 *
 	 * @param aula
 	 *            el aula a guardar
@@ -114,7 +114,7 @@ public class Aulas {
 	}
 
 	/**
-	 * Busca un aula en la colecci髇
+	 * Busca un aula en la colecci贸n
 	 *
 	 * @param aula
 	 *            el aula a buscar
@@ -129,7 +129,7 @@ public class Aulas {
 	}
 
 	/**
-	 * Borra un aula de la colecci髇
+	 * Borra un aula de la colecci贸n
 	 *
 	 * @param aula
 	 *            el aula a borrar
@@ -146,7 +146,7 @@ public class Aulas {
 	}
 
 	/**
-	 * Obtiene las salidas de todas las aulas de la colecci髇
+	 * Obtiene las salidas de todas las aulas de la colecci贸n
 	 *
 	 * @return la salida de las aulas
 	 */

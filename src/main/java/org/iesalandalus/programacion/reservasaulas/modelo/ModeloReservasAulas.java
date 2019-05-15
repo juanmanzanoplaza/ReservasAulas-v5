@@ -17,7 +17,7 @@ import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Pe
 /**
  *
  * Clase modelo utilizada como intermediaria entre el controlador y las clases
- * del modelo. Llama a todas las funciones de la aplicaciÛn.
+ * del modelo. Llama a todas las funciones de la aplicaci√≥n.
  *
  * @see Profesores
  * @see Aulas
@@ -25,7 +25,7 @@ import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Pe
  * @see ControladorReservasAulas
  * @see IControladorReservasAulas
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  *
  */
 public class ModeloReservasAulas implements IModeloReservasAulas {
@@ -44,7 +44,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Obtiene todas las aulas registradas. Llama al mÈtodo getAulas de Aulas
+	 * Obtiene todas las aulas registradas. Llama al m√©todo getAulas de Aulas
 	 *
 	 * @return todas las aulas guardadas
 	 */
@@ -53,26 +53,26 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Obtiene el n˙mero de aulas registradas. Llama al mÈtodo getNumAulas de Aulas
+	 * Obtiene el n√∫mero de aulas registradas. Llama al m√©todo getNumAulas de Aulas
 	 *
-	 * @return el n˙mero de aulas guardadas
+	 * @return el n√∫mero de aulas guardadas
 	 */
 	public int getNumAulas() {
 		return aulas.getNumAulas();
 	}
 
 	/**
-	 * Obtiene la salida de todas las aulas registradas. Llama al mÈtodo representar
+	 * Obtiene la salida de todas las aulas registradas. Llama al m√©todo representar
 	 * de Aulas
 	 *
-	 * @return una colecciÛn con la representaciÛn de cada aula en forma de cadena
+	 * @return una colecci√≥n con la representaci√≥n de cada aula en forma de cadena
 	 */
 	public List<String> representarAulas() {
 		return aulas.representar();
 	}
 
 	/**
-	 * Busca el aula indicada entre las que han sido registradas. Llama al mÈtodo
+	 * Busca el aula indicada entre las que han sido registradas. Llama al m√©todo
 	 * buscar de Aulas
 	 *
 	 * @param buscar
@@ -84,7 +84,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Guarda el aula indicada. Llama al mÈtodo insertar de Aulas
+	 * Guarda el aula indicada. Llama al m√©todo insertar de Aulas
 	 *
 	 * @param insertar
 	 *            el aula que queremos guardar
@@ -98,7 +98,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Borra el aula indicada si existe entre las guardadas. Llama al mÈtodo borrar
+	 * Borra el aula indicada si existe entre las guardadas. Llama al m√©todo borrar
 	 * de Aulas
 	 *
 	 * @param borrar
@@ -131,7 +131,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Obtiene todos los profesores registrados. Llama al mÈtodo getProfesores de
+	 * Obtiene todos los profesores registrados. Llama al m√©todo getProfesores de
 	 * Profesores
 	 *
 	 * @return todos los profesores guardados
@@ -141,20 +141,20 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Obtiene el n˙mero de profesores registrados. Llama al mÈtodo getNumProfesores
+	 * Obtiene el n√∫mero de profesores registrados. Llama al m√∫todo getNumProfesores
 	 * de Profesores
 	 *
-	 * @return el n˙mero de profesores guardados
+	 * @return el n√∫mero de profesores guardados
 	 */
 	public int getNumProfesores() {
 		return profesores.getNumProfesores();
 	}
 
 	/**
-	 * Obtiene la salida de todos los profesores registrados. Llama al mÈtodo
+	 * Obtiene la salida de todos los profesores registrados. Llama al m√©todo
 	 * representar de Profesores
 	 *
-	 * @return una colecciÛn con la representaciÛn de cada profesor en forma de
+	 * @return una colecci√≥n con la representaci√≥n de cada profesor en forma de
 	 *         cadena
 	 */
 	public List<String> representarProfesores() {
@@ -163,7 +163,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 
 	/**
 	 * Busca el profesor indicado entre los que han sido registrados. Llama al
-	 * mÈtodo buscar de Profesores
+	 * m√©todo buscar de Profesores
 	 *
 	 * @param buscar
 	 *            el profesor que buscamos
@@ -174,7 +174,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Guarda el profesor indicado. Llama al mÈtodo insertar de Profesores
+	 * Guarda el profesor indicado. Llama al m√©todo insertar de Profesores
 	 *
 	 * @param insertar
 	 *            el profesor que queremos guardar
@@ -189,7 +189,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 
 	/**
 	 * Borra el profesor indicado si existe entre los que han sido registrados.
-	 * Llama al mÈtodo borrar de Profesores
+	 * Llama al m√©todo borrar de Profesores
 	 *
 	 * @param borrar
 	 *            el profesor que queremos borrar
@@ -221,7 +221,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Obtiene todas las reservas realizadas. Llama al mÈtodo getReservas de
+	 * Obtiene todas las reservas realizadas. Llama al m√©todo getReservas de
 	 * Reservas
 	 *
 	 * @return todas las reservas realizadas
@@ -231,20 +231,20 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Obtiene el n˙mero de reservas realizadas. Llama al mÈtodo getNumReservas de
+	 * Obtiene el n√∫mero de reservas realizadas. Llama al m√©todo getNumReservas de
 	 * Reservas
 	 *
-	 * @return el n˙mero de reservas guardadas
+	 * @return el n√∫mero de reservas guardadas
 	 */
 	public int getNumReservas() {
 		return reservas.getNumReservas();
 	}
 
 	/**
-	 * Obtiene la salida de todas las reservas realizadas. Llama al mÈtodo
+	 * Obtiene la salida de todas las reservas realizadas. Llama al m√©todo
 	 * representar de Reservas
 	 *
-	 * @return una colecciÛn con la representaciÛn de cada reserva en forma de
+	 * @return una colecci√≥n con la representaci√≥n de cada reserva en forma de
 	 *         cadena
 	 */
 	public List<String> representarReservas() {
@@ -252,7 +252,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Busca la reserva indicada entre las que se han realizado. Llama al mÈtodo
+	 * Busca la reserva indicada entre las que se han realizado. Llama al m√©todo
 	 * buscar de Reservas
 	 *
 	 * @param buscar
@@ -264,7 +264,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Guarda la reserva indicada. Llama al mÈtodo insertar de Reservas
+	 * Guarda la reserva indicada. Llama al m√©todo insertar de Reservas
 	 *
 	 * @param realizar
 	 *            la reserva a realizar
@@ -278,7 +278,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Borra la reserva indicada si existe entre las realizadas. Llama al mÈtodo
+	 * Borra la reserva indicada si existe entre las realizadas. Llama al m√©todo
 	 * borrar de Reserva
 	 *
 	 * @param anular
@@ -293,11 +293,11 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Obtiene todas las reservas correspondientes al aula indicada. Llama al mÈtodo
+	 * Obtiene todas las reservas correspondientes al aula indicada. Llama al m√©todo
 	 * getReservasAula de Reservas
 	 *
 	 * @param aula
-	 *            el aula sobre la que est·n hechas las reservas
+	 *            el aula sobre la que est√°n hechas las reservas
 	 * @return un array con todas las reservas sobre el aula indicada
 	 * @throws IllegalArgumentException
 	 *             si el aula es nula
@@ -308,10 +308,10 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 
 	/**
 	 * Obtiene todas las reservas realizadas por el profesor indicado. Llama al
-	 * mÈtodo getReservasProfesor de Reservas
+	 * m√©todo getReservasProfesor de Reservas
 	 *
 	 * @param profesor
-	 *            el profesor a nombre del que est·n hechas las reservas
+	 *            el profesor a nombre del que est√°n hechas las reservas
 	 * @return un array con todas las reservas a nombre del profesor indicado
 	 * @throws IllegalArgumentException
 	 *             si el profesor es nulo
@@ -321,12 +321,12 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	}
 
 	/**
-	 * Obtiene todas las reservas realizadas en un dÌa y tramo indicados. Llama al
-	 * mÈtodo getReservasPermanencia de Reservas
+	 * Obtiene todas las reservas realizadas en un d√≠a y tramo indicados. Llama al
+	 * m√©todo getReservasPermanencia de Reservas
 	 *
 	 * @param permanencia
 	 *            la fecha de las reservas
-	 * @return un array con todas las reservas de ese dÌa y tramo
+	 * @return un array con todas las reservas de ese d√≠a y tramo
 	 * @throws IllegalArgumentException
 	 *             si la permanencia es nula
 	 */
@@ -336,18 +336,18 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 
 	/**
 	 * Comprueba si hay alguna reserva realizada sobre un aula en una permanencia
-	 * indicadas. Llama al mÈtodo consultarDisponibilidad de Reservas
+	 * indicadas. Llama al m√©todo consultarDisponibilidad de Reservas
 	 *
 	 * @param aula
 	 *            el aula sobre la que queremos consultar la disponibilidad
 	 * @param permanencia
-	 *            el dÌa que queremos comprobar si est· reservada el aula
-	 * @return True si est· disponible (no est· reservada) y False si no est·
-	 *         disponible (est· reservada)
+	 *            el d√≠a que queremos comprobar si est√° reservada el aula
+	 * @return True si est√° disponible (no est√° reservada) y False si no est√°
+	 *         disponible (est√° reservada)
 	 * @throws IllegalArgumentException
 	 *             si el aula o la permanencia son nulas, o si el tipo de
 	 *             permanencia consultado no coincide con el de las reservas
-	 *             realizadas sobre ese aula ese dÌa
+	 *             realizadas sobre ese aula ese d√≠a
 	 */
 	public boolean consultarDisponibilidad(Aula aula, Permanencia permanencia) throws IllegalArgumentException {
 		return reservas.consultarDisponibilidad(aula, permanencia);

@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  * Clase que representa un profesor de un instituto
  *
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  *
  */
 public class Profesor implements Serializable {
@@ -26,9 +26,9 @@ public class Profesor implements Serializable {
 	 * @param nombre
 	 *            el nombre del profesor
 	 * @param correo
-	 *            el correo electr�nico del profesor
+	 *            el correo electrónico del profesor
 	 * @throws IllegalArgumentException
-	 *             si alguno de los par�metros no es v�lido
+	 *             si alguno de los parámetros no es válido
 	 */
 	public Profesor(String nombre, String correo) throws IllegalArgumentException {
 		setNombre(nombre);
@@ -42,11 +42,11 @@ public class Profesor implements Serializable {
 	 * @param nombre
 	 *            el nombre del profesor
 	 * @param correo
-	 *            el correo electr�nico del profesor
+	 *            el correo electrónico del profesor
 	 * @param telefono
-	 *            el tel�fono del profesor
+	 *            el teléfono del profesor
 	 * @throws IllegalArgumentException
-	 *             si alguno de los par�metros no es v�lido
+	 *             si alguno de los parámetros no es válido
 	 */
 	public Profesor(String nombre, String correo, String telefono) throws IllegalArgumentException {
 		setNombre(nombre);
@@ -72,12 +72,12 @@ public class Profesor implements Serializable {
 	}
 
 	/**
-	 * M�todo set para el nombre del profesor
+	 * Método set para el nombre del profesor
 	 *
 	 * @param nombre
 	 *            el nombre del profesor
 	 * @throws IllegalArgumentException
-	 *             si el nombre es nulo o vac�o
+	 *             si el nombre es nulo o vacío
 	 */
 	private void setNombre(String nombre) throws IllegalArgumentException {
 		if (nombre == null)
@@ -89,12 +89,12 @@ public class Profesor implements Serializable {
 	}
 
 	/**
-	 * M�todo set para el correo electr�nico del profesor
+	 * Método set para el correo electrónico del profesor
 	 *
 	 * @param correo
 	 *            el correo del profesor
 	 * @throws IllegalArgumentException
-	 *             si el correo es nulo o no es un correo con formato v�lido
+	 *             si el correo es nulo o no es un correo con formato válido
 	 */
 	public void setCorreo(String correo) throws IllegalArgumentException {
 		if (correo == null)
@@ -108,12 +108,12 @@ public class Profesor implements Serializable {
 	}
 
 	/**
-	 * M�todo set para el tel�fono del profesor
+	 * Método set para el teléfono del profesor
 	 *
 	 * @param telefono
 	 *            el telefono del profesor
 	 * @throws IllegalArgumentException
-	 *             si el tel�fono no tiene un formato v�lido
+	 *             si el teléfono no tiene un formato válido
 	 */
 	public void setTelefono(String telefono) throws IllegalArgumentException {
 		if (telefono == null) {
@@ -128,7 +128,7 @@ public class Profesor implements Serializable {
 	}
 
 	/**
-	 * M�todo get para el nombre del profesor
+	 * Método get para el nombre del profesor
 	 *
 	 * @return el nombre del profesor
 	 */
@@ -146,25 +146,25 @@ public class Profesor implements Serializable {
 	}
 
 	/**
-	 * M�todo get para el tel�fono del profesor
+	 * Método get para el teléfono del profesor
 	 *
-	 * @return el tel�fono del profesor
+	 * @return el teléfono del profesor
 	 */
 	public String getTelefono() {
 		return telefono;
 	}
 
 	/**
-	 * M�todo hashCode de la clase. Sirve para diferenciar objetos
+	 * Método hashCode de la clase. Sirve para diferenciar objetos
 	 *
-	 * @return el c�digo hash del objeto
+	 * @return el código hash del objeto
 	 */
 	public int hashCode() {
 		return Objects.hash(nombre, correo, telefono);
 	}
 
 	/**
-	 * M�todo equals de la clase
+	 * Método equals de la clase
 	 *
 	 * @return True si son iguales, False si no
 	 */
@@ -183,7 +183,7 @@ public class Profesor implements Serializable {
 	/**
 	 * Representa un profesor como una cadena de caracteres
 	 *
-	 * @return la representaci�n del profesor
+	 * @return la representación del profesor
 	 */
 	public String toString() {
 		String devolver = "[nombre=" + getNombre() + ", correo=" + getCorreo();

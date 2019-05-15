@@ -19,10 +19,14 @@ import javafx.scene.Node;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+/**
+ * Controlador del fichero fxml InsertarProfesor
+ * 
+ * @author Juan Antonio Manzano Plaza
+ * @version 4
+ *
+ */
 public class ControladorInsertarProfesor implements Initializable {
-
-	//private static final String ER_CORREO = "^[a-z0-9]+(\\.[a-z0-9]+)*@[a-z]+(\\.[a-z]+)*(\\.[a-z]{1,4})$";
-	//private static final String ER_TELEFONO = "^[69][0-9]{8}$";
 
 	private IControladorReservasAulas controladorMVC;
 
@@ -32,18 +36,36 @@ public class ControladorInsertarProfesor implements Initializable {
 	@FXML private TextField tfCorreo;
 	@FXML private TextField tfTelefono;
 
+	/**
+	 * Método initialize de la interfaz Initializable
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 	}
 
+	/**
+	 * Método set para el controlador del programa
+	 * 
+	 * @param controlador el controlador del modelo vista controlador
+	 */
 	public void setControladorMVC(IControladorReservasAulas controlador) {
 		controladorMVC = controlador;
 	}
 
+	/**
+	 * Método set para la colección de profesores
+	 * 
+	 * @param profesores la colección de profesores proveniente de la ventana principal
+	 */
 	public void setProfesores(ObservableList<Profesor> profesores) {
 		this.profesores = profesores;
 	}
 
+	/**
+	 * Método que gestiona el evento de haber pulsado el botón aceptar
+	 * 
+	 * @param event el evento que gestiona
+	 */
 	@FXML private void aceptar(ActionEvent event) {
 		Profesor profesor = null;
 
@@ -62,6 +84,11 @@ public class ControladorInsertarProfesor implements Initializable {
 		}
 	}
 
+	/**
+	 * Método que gestiona el evento de haber pulsado el botón cancelar
+	 * 
+	 * @param event el evento que gestiona
+	 */
 	@FXML private void cancelar(ActionEvent event) {
 		Stage escenario = (Stage)((Node) event.getSource()).getScene().getWindow();
 
@@ -70,21 +97,5 @@ public class ControladorInsertarProfesor implements Initializable {
 		else
 			event.consume();
 	}
-
-	/**@FXML private void comprobarCorreo(ActionEvent event) {
-		Matcher m = Pattern.compile(ER_CORREO).matcher(tfCorreo.getText());
-		if(!m.matches()) {
-			String nuevoValor = tfCorreo.getText();
-			tfCorreo.setText(nuevoValor.substring(0, nuevoValor.length()-1));
-		}
-	}
-
-	@FXML private void comprobarTelefono(ActionEvent event) {
-		Matcher m = Pattern.compile(ER_TELEFONO).matcher(tfTelefono.getText());
-		if(!m.matches()) {
-			String nuevoValor = tfTelefono.getText();
-			tfTelefono.setText(nuevoValor.substring(0, nuevoValor.length()-1));
-		}
-	}**/
 
 }

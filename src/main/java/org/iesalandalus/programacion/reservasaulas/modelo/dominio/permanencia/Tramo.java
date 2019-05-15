@@ -7,7 +7,7 @@ import java.io.Serializable;
  * 
  * @see PermanenciaPorTramo
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  */
 public enum Tramo implements Serializable{
 	MANANA("Mañana"), TARDE("Tarde");
@@ -17,7 +17,7 @@ public enum Tramo implements Serializable{
 	 * Constructor privado
 	 * 
 	 * @param cadenaAMostrar
-	 *            la representaci�n del tramo como cadena de caracteres
+	 *            la representación del tramo como cadena de caracteres
 	 */
 	private Tramo(String cadenaAMostrar) {
 		this.cadenaAMostrar = cadenaAMostrar;
@@ -26,7 +26,7 @@ public enum Tramo implements Serializable{
 	/**
 	 * Representa un tramo como una cadena de caracteres
 	 * 
-	 * @return la representaci�n del tramo
+	 * @return la representación del tramo
 	 */
 	public String toString() {
 		return cadenaAMostrar;

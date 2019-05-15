@@ -1,0 +1,12 @@
+org.iesalandalus.programacion.reservasaulas
+org.iesalandalus.programacion.reservasaulas.controlador
+org.iesalandalus.programacion.reservasaulas.modelo
+org.iesalandalus.programacion.reservasaulas.modelo.dao
+org.iesalandalus.programacion.reservasaulas.modelo.dominio
+org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia
+org.iesalandalus.programacion.reservasaulas.vista
+org.iesalandalus.programacion.reservasaulas.vista.iugrafica
+org.iesalandalus.programacion.reservasaulas.vista.iugrafica.controladoresvistas
+org.iesalandalus.programacion.reservasaulas.vista.iugrafica.utilidades
+org.iesalandalus.programacion.reservasaulas.vista.iutextual
+org.iesalandalus.programacion.utilidades

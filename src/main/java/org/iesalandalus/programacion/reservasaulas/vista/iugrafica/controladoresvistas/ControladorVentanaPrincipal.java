@@ -34,6 +34,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Clase controladora del fxml de la VentanaPrincipal
+ *
+ * @author Juan Antonio Manzano Plaza
+ * @version 4
+ *
+ */
 public class ControladorVentanaPrincipal implements Initializable{
 
 	private IControladorReservasAulas controladorMVC;
@@ -96,13 +103,20 @@ public class ControladorVentanaPrincipal implements Initializable{
 	private static final DateTimeFormatter FORMATO_DIA = DateTimeFormatter.ofPattern("dd/MM/uuuu");
 	private static final DateTimeFormatter FORMATO_HORA = DateTimeFormatter.ofPattern("HH:mm");
 
+	/**
+	 * Método initialize de la interfaz Initializable
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		setAtributosTablasAula();
 		setAtributosTablasProfesor();
 		setAtributosTablasReservas();
+		setListeners();
 	}
 
+	/**
+	 * Método que vincula las TableColumn de las TableView de la pestaña de las aulas con los atributos correspondientes de las Aulas y sus Reservas
+	 */
 	private void setAtributosTablasAula() {
 		tcNombreAulas.setCellValueFactory(Aula -> new SimpleStringProperty(Aula.getValue().getNombre()));
 		tcPuestosAulas.setCellValueFactory(Aula -> new SimpleStringProperty(Integer.toString(Aula.getValue().getPuestos())));
@@ -112,6 +126,9 @@ public class ControladorVentanaPrincipal implements Initializable{
 		tcPuntosAulas.setCellValueFactory(Reserva -> new SimpleStringProperty(Float.toString(Reserva.getValue().getPuntos())));
 	}
 
+	/**
+	 * Método que vincula las TableColumn de las TableView de la pestaña de los profesores con los atributos correspondientes de los Profesores y sus Reservas
+	 */
 	private void setAtributosTablasProfesor() {
 		tcNombreProfesores.setCellValueFactory(Profesor -> new SimpleStringProperty(Profesor.getValue().getNombre()));
 		tcCorreoProfesores.setCellValueFactory(Profesor -> new SimpleStringProperty(Profesor.getValue().getCorreo()));
@@ -122,6 +139,9 @@ public class ControladorVentanaPrincipal implements Initializable{
 		tcPuntosProfesores.setCellValueFactory(Reserva -> new SimpleStringProperty(Float.toString(Reserva.getValue().getPuntos())));
 	}
 
+	/**
+	 * Método que vincula las TableColumn de la TableView de la pestaña de las reservas con los atributos correspondientes de las Reservas
+	 */
 	private void setAtributosTablasReservas() {
 		tcAulaReservas.setCellValueFactory(Reserva -> new SimpleStringProperty(Reserva.getValue().getAula().getNombre()));
 		tcProfesorReservas.setCellValueFactory(Reserva -> new SimpleStringProperty(Reserva.getValue().getProfesor().getNombre()));
@@ -130,6 +150,27 @@ public class ControladorVentanaPrincipal implements Initializable{
 		tcPuntosReservas.setCellValueFactory(Reserva -> new SimpleStringProperty(Float.toString(Reserva.getValue().getPuntos())));
 	}
 
+	/**
+	 * Método que crea los Listeners para las TableView de Aulas y de Profesores
+	 */
+	private void setListeners() {
+		tvAulas.getSelectionModel().selectedItemProperty().addListener((Ob, valorAntiguo, valorNuevo) -> {
+			reservasAula.setAll(controladorMVC.getReservasAula(valorNuevo));
+			tvReservasAulas.setItems(reservasAula);
+		});
+
+		tvProfesores.getSelectionModel().selectedItemProperty().addListener((Ob, valorAntiguo, valorNuevo) -> {
+			reservasProfesor.setAll(controladorMVC.getReservasProfesor(valorNuevo));
+			tvReservasProfesores.setItems(reservasProfesor);
+		});
+	}
+
+	/**
+	 * Método que obtiene el String que representa el Tramo o la hora dependiendo del tipo de Permanencia de la Reserva
+	 *
+	 * @param reserva la Reserva de la que queremos obtener el String de la hora o Tramo
+	 * @return
+	 */
 	private String getPermanenciaString(Reserva reserva) {
 		Permanencia permanencia = reserva.getPermanencia();
 		if(permanencia instanceof PermanenciaPorTramo)
@@ -138,29 +179,44 @@ public class ControladorVentanaPrincipal implements Initializable{
 			return ((PermanenciaPorHora) permanencia).getHora().format(FORMATO_HORA);
 	}
 
+	/**
+	 * Método que establece los valores de la TableView de Aulas obtenidas desde el controlador del programa
+	 */
 	public void setAulas() {
 		aulas.setAll(controladorMVC.getAulas());
 		tvAulas.setItems(aulas);
 	}
 
+	/**
+	 * Método que establece los valores de la TableView de Profesores obtenidos desde el controlador del programa
+	 */
 	public void setProfesores() {
 		profesores.setAll(controladorMVC.getProfesores());
 		tvProfesores.setItems(profesores);
 	}
 
+	/**
+	 * Método que establece los valores de la TableView de Reservas obtenidas desde el controlador del programa
+	 */
 	public void setReservas() {
 		reservas.setAll(controladorMVC.getReservas());
 		tvReservas.setItems(reservas);
 	}
 
+	/**
+	 * Método que guarda el controlador del modelo vista controlador en una variable de clase
+	 *
+	 * @param controlador el controlador del programa
+	 */
 	public void setControladorMVC(IControladorReservasAulas controlador) {
 		controladorMVC = controlador;
 	}
 
-	//Ahora hay que empezar a dar funcionalidad a todos los menús contextuales
-	//FALTA -> Cambiar el fxml para hacer que cada uno de los menús llame al método correspondiente
-	//FALTA -> Implementar los métodos
-
+	/**
+	 * Método que gestiona el evento de pulsar sobre el botón del menú contextual de insertar aula
+	 *
+	 * @param event el evento a gestionar
+	 */
 	@FXML private void insertarAula(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../vistas/InsertarAula.fxml"));
@@ -180,6 +236,11 @@ public class ControladorVentanaPrincipal implements Initializable{
 		}
 	}
 
+	/**
+	 * Método que gestiona el evento de pulsar sobre el botón del menú contextual de insertar profesor
+	 *
+	 * @param event el evento a gestionar
+	 */
 	@FXML private void insertarProfesor(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../vistas/InsertarProfesor.fxml"));
@@ -198,6 +259,11 @@ public class ControladorVentanaPrincipal implements Initializable{
 		}
 	}
 
+	/**
+	 * Método que gestiona el evento de pulsar sobre el botón del menú contextual de realizar reserva
+	 *
+	 * @param event
+	 */
 	@FXML private void insertarReserva(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("../vistas/InsertarReserva.fxml"));
@@ -216,6 +282,11 @@ public class ControladorVentanaPrincipal implements Initializable{
 		}
 	}
 
+	/**
+	 * Método que gestiona el evento de pulsar sobre el botón del menú contextual de borrar aula
+	 *
+	 * @param event el evento a gestionar
+	 */
 	@FXML private void borrarAula(ActionEvent event) {
 		Aula aula = null;
 		try {
@@ -230,6 +301,11 @@ public class ControladorVentanaPrincipal implements Initializable{
 		}
 	}
 
+	/**
+	 * Método que gestiona el evento de pulsar sobre el botón del menú contextual de borrar profesor
+	 *
+	 * @param event
+	 */
 	@FXML private void borrarProfesor(ActionEvent event) {
 		Profesor profesor = null;
 		try {
@@ -244,6 +320,11 @@ public class ControladorVentanaPrincipal implements Initializable{
 		}
 	}
 
+	/**
+	 * Método que gestiona el evento de pulsar sobre el botón del menú contextual de anular reserva
+	 *
+	 * @param event el evento a gestionar
+	 */
 	@FXML private void anularReserva(ActionEvent event) {
 		Reserva reserva = null;
 		try {
@@ -258,6 +339,49 @@ public class ControladorVentanaPrincipal implements Initializable{
 		}
 	}
 
+	/**
+	 * Método que gestiona el evento de pulsar sobre el botón del menú contextual de anular reserva de la tabla de Aulas
+	 *
+	 * @param event el evento a gestionar
+	 */
+	@FXML private void anularReservaAula(ActionEvent event) {
+		Reserva reserva = null;
+		try {
+			reserva = tvReservasAulas.getSelectionModel().getSelectedItem();
+			if(reserva!=null && Dialogos.mostrarDialogoConfirmaion("Anular reserva", "¿Estás seguro de que quieres anular la reserva?", null)) {
+				controladorMVC.anularReserva(reserva);
+				reservas.remove(reserva);
+				Dialogos.mostrarDialogoInformacion("Anular reserva", "Reserva anulada satisfactoriamente", null);
+			}
+		} catch (Exception e) {
+			Dialogos.mostrarDialogoError("Anular reserva", e.getMessage());
+		}
+	}
+
+	/**
+	 * Método que gestiona el evento de pulsar sobre el botón del menú contextual de anular reserva de la tabla de Profesores
+	 *
+	 * @param event el evento a gestionar
+	 */
+	@FXML private void anularReservaProfesor(ActionEvent event) {
+		Reserva reserva = null;
+		try {
+			reserva = tvReservasProfesores.getSelectionModel().getSelectedItem();
+			if(reserva!=null && Dialogos.mostrarDialogoConfirmaion("Anular reserva", "¿Estás seguro de que quieres anular la reserva?", null)) {
+				controladorMVC.anularReserva(reserva);
+				reservas.remove(reserva);
+				Dialogos.mostrarDialogoInformacion("Anular reserva", "Reserva anulada satisfactoriamente", null);
+			}
+		} catch (Exception e) {
+			Dialogos.mostrarDialogoError("Anular reserva", e.getMessage());
+		}
+	}
+
+	/**
+	 * Método que gestiona el evento de pulsar sobre el botón del menú contextual de reservar aula
+	 *
+	 * @param event el evento a gestionar
+	 */
 	@FXML private void reservarAula(ActionEvent event) {
 		Aula aula = null;
 		try {
@@ -281,6 +405,11 @@ public class ControladorVentanaPrincipal implements Initializable{
 		}
 	}
 
+	/**
+	 * Método que gestiona el evento de pulsar sobre el botón del menú contextual de realizar una reserva desde un profesor
+	 *
+	 * @param event el evento a gestionar
+	 */
 	@FXML private void profesorReserva(ActionEvent event) {
 		Profesor profesor = null;
 		try {
@@ -303,11 +432,4 @@ public class ControladorVentanaPrincipal implements Initializable{
 			Dialogos.mostrarDialogoError("Profesor reserva", e.getMessage());
 		}
 	}
-	
-	/**private void filaSeleccionada(Aula aula) {
-		if(aula!=null) {
-			reservasAula.addAll(controladorMVC.getReservasAula(aula));
-			tvReservasAulas.setItems(reservasAula);
-		}
-	}**/
 }

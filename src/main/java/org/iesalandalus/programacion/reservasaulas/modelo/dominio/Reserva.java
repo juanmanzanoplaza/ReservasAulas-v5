@@ -14,7 +14,7 @@ import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Pe
  * @see Aula
  * @see Permanencia
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  */
 public class Reserva implements Serializable {
 
@@ -30,9 +30,9 @@ public class Reserva implements Serializable {
 	 * @param aula
 	 *            el aula que es reservada
 	 * @param permanencia
-	 *            el dÌa y el tramo en el que es reservada
+	 *            el d√≠a y el tramo en el que es reservada
 	 * @throws IllegalArgumentException
-	 *             si alguno de los par·metros no es v·lido
+	 *             si alguno de los par√°metros no es v√°lido
 	 */
 	public Reserva(Profesor profesor, Aula aula, Permanencia permanencia) throws IllegalArgumentException {
 		setProfesor(profesor);
@@ -57,7 +57,7 @@ public class Reserva implements Serializable {
 	}
 
 	/**
-	 * MÈtodo set para el profesor de la reserva
+	 * M√©todo set para el profesor de la reserva
 	 *
 	 * @param profesor
 	 *            el profesor que realiza la reserva
@@ -71,7 +71,7 @@ public class Reserva implements Serializable {
 	}
 
 	/**
-	 * MÈtodo get para el profesor de la reserva
+	 * M√©todo get para el profesor de la reserva
 	 *
 	 * @return el profesor de la reserva
 	 */
@@ -80,7 +80,7 @@ public class Reserva implements Serializable {
 	}
 
 	/**
-	 * MÈtodo set para el aula de la reserva
+	 * M√©todo set para el aula de la reserva
 	 *
 	 * @param aula
 	 *            el aula reservada
@@ -94,7 +94,7 @@ public class Reserva implements Serializable {
 	}
 
 	/**
-	 * MÈtodo get para el aula de la reserva
+	 * M√©todo get para el aula de la reserva
 	 *
 	 * @return el aula de la reserva
 	 */
@@ -103,7 +103,7 @@ public class Reserva implements Serializable {
 	}
 
 	/**
-	 * MÈtodo set para la permanencia de la reserva
+	 * M√©todo set para la permanencia de la reserva
 	 *
 	 * @param permanencia
 	 *            la permanencia de la reserva
@@ -120,7 +120,7 @@ public class Reserva implements Serializable {
 	}
 
 	/**
-	 * MÈtodo get para la permanencia de la reserva
+	 * M√©todo get para la permanencia de la reserva
 	 *
 	 * @return la permanencia de la reserva
 	 */
@@ -132,7 +132,7 @@ public class Reserva implements Serializable {
 	}
 
 	/**
-	 * MÈtodo get para los puntos que cuesta hacer una reserva
+	 * M√©todo get para los puntos que cuesta hacer una reserva
 	 *
 	 * @return los puntos que cuesta hacer una reserva
 	 */
@@ -141,16 +141,16 @@ public class Reserva implements Serializable {
 	}
 
 	/**
-	 * MÈtodo hashCode de la clase. Sirve para diferenciar objetos
+	 * M√©todo hashCode de la clase. Sirve para diferenciar objetos
 	 *
-	 * @return el cÛdigo hash del objeto
+	 * @return el c√≥digo hash del objeto
 	 */
 	public int hashCode() {
 		return Objects.hash(profesor, aula, permanencia);
 	}
 
 	/**
-	 * MÈtodo equals de la clase
+	 * M√©todo equals de la clase
 	 *
 	 * @return True si son iguales, False si no
 	 */
@@ -168,7 +168,7 @@ public class Reserva implements Serializable {
 	/**
 	 * Representa una reserva como una cadena de caracteres
 	 *
-	 * @return la representaciÛn de la reserva
+	 * @return la representaci√≥n de la reserva
 	 */
 	public String toString() {
 		return "[profesor=" + getProfesor() + ", aula=" + getAula() + ", permanencia=" + getPermanencia() + ", puntos="

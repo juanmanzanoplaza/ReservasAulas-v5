@@ -7,13 +7,13 @@ import org.iesalandalus.programacion.utilidades.Entrada;
 
 /**
  *
- * Clase dedicada a la interacci�n con el usuario. Pide y lee los datos por
+ * Clase dedicada a la interacción con el usuario. Pide y lee los datos por
  * teclado
  *
  * @see VistaReservasAulas
  * @see Opcion
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  *
  */
 public class Consola {
@@ -25,7 +25,7 @@ public class Consola {
 	}
 
 	/**
-	 * M�todo est�tico encargado de mostrar por pantalla todas las opciones de
+	 * Método estático encargado de mostrar por pantalla todas las opciones de
 	 * Opcion
 	 */
 	public static void mostrarMenu() {
@@ -41,19 +41,19 @@ public class Consola {
 	}
 
 	/**
-	 * Imprime por pantalla el t�tulo de la opci�n seleccionada.
+	 * Imprime por pantalla el título de la opción seleccionada.
 	 *
 	 * @param cabecera
-	 *            el t�tulo de la opci�n
+	 *            el título de la opción
 	 */
 	public static void mostrarCabecera(String cabecera) {
 		System.out.println(cabecera);
 	}
 
 	/**
-	 * Lee por consola el valor ordinal de la opci�n que desea realizarse.
+	 * Lee por consola el valor ordinal de la opción que desea realizarse.
 	 *
-	 * @return el valor ordinal de la opci�n a realizar
+	 * @return el valor ordinal de la opción a realizar
 	 */
 	public static int elegirOpcion() {
 		int opcion;
@@ -65,7 +65,7 @@ public class Consola {
 	/**
 	 * Lee por consola el nombre de un aula y la crea.
 	 *
-	 * @return el aula le�da
+	 * @return el aula leída
 	 */
 	public static Aula leerAula() {
 		Aula leida = null;
@@ -80,7 +80,7 @@ public class Consola {
 	/**
 	 * Lee por consola el nombre de un aula.
 	 *
-	 * @return el nombre le�do
+	 * @return el nombre leído
 	 */
 	public static String leerNombreAula() {
 		String nombre;
@@ -92,7 +92,7 @@ public class Consola {
 	/**
 	 * Lee por consola todos los atributos de un profesor y lo crea.
 	 *
-	 * @return el profesor le�do
+	 * @return el profesor leído
 	 */
 	public static Profesor leerProfesor() {
 		Profesor leido = null;
@@ -112,7 +112,7 @@ public class Consola {
 	/**
 	 * Lee por consola el nombre de un profesor.
 	 *
-	 * @return el nombre le�do
+	 * @return el nombre leído
 	 */
 	public static String leerNombreProfesor() {
 		String nombre;
@@ -122,11 +122,11 @@ public class Consola {
 	}
 
 	/**
-	 * Lee por consola un tramo. En esta versi�n s�lo est�n las opciones de ma�ana
-	 * (0) y de tarde (1) Si a�adimos m�s opciones a Tramo ser� necesario cambiar la
+	 * Lee por consola un tramo. En esta versión sólo están las opciones de mañana
+	 * (0) y de tarde (1) Si añadimos más opciones a Tramo será necesario cambiar la
 	 * salida por pantalla, pero no el bucle ni el return.
 	 *
-	 * @return el tramo horario le�do
+	 * @return el tramo horario leído
 	 */
 	public static Tramo leerTramo() {
 		int opcion;
@@ -139,9 +139,9 @@ public class Consola {
 	}
 
 	/**
-	 * Lee por consola el d�a para una permanencia
+	 * Lee por consola el día para una permanencia
 	 *
-	 * @return la fecha le�da
+	 * @return la fecha leída
 	 */
 	public static String leerDia() {
 		String dia = "";
@@ -153,7 +153,7 @@ public class Consola {
 	/**
 	 * Lee por consola la hora para una permanencia por hora
 	 *
-	 * @return la hora le�da
+	 * @return la hora leída
 	 */
 	public static String leerHora() {
 		String hora = "";

@@ -13,7 +13,7 @@ import java.util.Objects;
  * 
  * @see Permanencia
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  *
  */
 public class PermanenciaPorHora extends Permanencia implements Serializable {
@@ -28,11 +28,11 @@ public class PermanenciaPorHora extends Permanencia implements Serializable {
 	 * Constructor de la clase
 	 * 
 	 * @param dia
-	 *            el dÌa que es reservada el aula
+	 *            el d√≠a que es reservada el aula
 	 * @param hora
 	 *            la hora durante la que es reservada el aula
 	 * @throws IllegalArgumentException
-	 *             si el dÌa o la hora no son v·lidos
+	 *             si el d√≠a o la hora no son v√°lidos
 	 */
 	public PermanenciaPorHora(LocalDate dia, LocalTime hora) throws IllegalArgumentException {
 		super(dia);
@@ -43,11 +43,11 @@ public class PermanenciaPorHora extends Permanencia implements Serializable {
 	 * Constructor de la clase
 	 * 
 	 * @param dia
-	 *            el dÌa que es reservada el aula
+	 *            el d√≠a que es reservada el aula
 	 * @param hora
 	 *            la hora durante la que es reservada el aula
 	 * @throws IllegalArgumentException
-	 *             si el dÌa o la hora no son v·lidos
+	 *             si el d√≠a o la hora no son v√°lidos
 	 */
 	public PermanenciaPorHora(String dia, LocalTime hora) throws IllegalArgumentException {
 		super(dia);
@@ -58,11 +58,11 @@ public class PermanenciaPorHora extends Permanencia implements Serializable {
 	 * Constructor de la clase
 	 * 
 	 * @param dia
-	 *            el dÌa que es reservada el aula
+	 *            el d√≠a que es reservada el aula
 	 * @param hora
 	 *            la hora durante la que es reservada el aula
 	 * @throws IllegalArgumentException
-	 *             si el dÌa o la hora no son v·lidos
+	 *             si el d√≠a o la hora no son v√°lidos
 	 */
 	public PermanenciaPorHora(LocalDate dia, String hora) throws IllegalArgumentException {
 		super(dia);
@@ -73,11 +73,11 @@ public class PermanenciaPorHora extends Permanencia implements Serializable {
 	 * Constructor de la clase
 	 * 
 	 * @param dia
-	 *            el dÌa que es reservada el aula
+	 *            el d√≠a que es reservada el aula
 	 * @param hora
 	 *            la hora durante la que es reservada el aula
 	 * @throws IllegalArgumentException
-	 *             si el dÌa o la hora no son v·lidos
+	 *             si el d√≠a o la hora no son v√°lidos
 	 */
 	public PermanenciaPorHora(String dia, String hora) throws IllegalArgumentException {
 		super(dia);
@@ -100,7 +100,7 @@ public class PermanenciaPorHora extends Permanencia implements Serializable {
 	}
 
 	/**
-	 * MÈtodo get para la hora de la permanencia
+	 * M√©todo get para la hora de la permanencia
 	 * 
 	 * @return la hora de la permanencia
 	 */
@@ -109,13 +109,13 @@ public class PermanenciaPorHora extends Permanencia implements Serializable {
 	}
 
 	/**
-	 * MÈtodo set para la hora de la permanencia
+	 * M√©todo set para la hora de la permanencia
 	 * 
 	 * @param hora
 	 *            la hora de la permanencia
 	 * @throws IllegalArgumentException
 	 *             si la hora no cumple alguna de las restricciones sobre las horas
-	 *             o no es v·lida
+	 *             o no es v√°lida
 	 */
 	private void setHora(LocalTime hora) throws IllegalArgumentException {
 		if (hora == null)
@@ -129,13 +129,13 @@ public class PermanenciaPorHora extends Permanencia implements Serializable {
 	}
 
 	/**
-	 * MÈtodo set para la hora de la permanencia
+	 * M√©todo set para la hora de la permanencia
 	 * 
 	 * @param hora
 	 *            la hora de la permanencia
 	 * @throws IllegalArgumentException
 	 *             si la hora no cumple alguna de las restricciones sobre las horas
-	 *             o no es v·lida
+	 *             o no es v√°lida
 	 */
 	private void setHora(String hora) throws IllegalArgumentException {
 		if (hora == null)
@@ -156,25 +156,25 @@ public class PermanenciaPorHora extends Permanencia implements Serializable {
 	}
 
 	/**
-	 * MÈtodo get para el n˙mero de puntos que cuesta reservar esta Permanencia
+	 * M√©todo get para el n√∫mero de puntos que cuesta reservar esta Permanencia
 	 * 
-	 * @return el n˙mero de puntos que cuesta reservar esta Permanencia
+	 * @return el n√∫mero de puntos que cuesta reservar esta Permanencia
 	 */
 	public int getPuntos() {
 		return PUNTOS;
 	}
 
 	/**
-	 * MÈtodo hashCode parra la clase. Sirve para diferenciar objetos.
+	 * M√©todo hashCode parra la clase. Sirve para diferenciar objetos.
 	 * 
-	 * @return el cÛdigo hash correspondiente al objeto
+	 * @return el c√≥digo hash correspondiente al objeto
 	 */
 	public int hashCode() {
 		return Objects.hash(dia, hora, PUNTOS);
 	}
 
 	/**
-	 * MÈtodo equals para la clase. Compara dos PermanenciaPorHora
+	 * M√©todo equals para la clase. Compara dos PermanenciaPorHora
 	 * 
 	 * @return true si son iguales, false si no lo son
 	 */
@@ -188,10 +188,10 @@ public class PermanenciaPorHora extends Permanencia implements Serializable {
 	}
 
 	/**
-	 * MÈtodo toString de la clase. Define como debe mostrarse una
+	 * M√©todo toString de la clase. Define como debe mostrarse una
 	 * PermanenciaPorHora
 	 * 
-	 * @return la representaciÛn en forma de texto de la Permanencia
+	 * @return la representaci√≥n en forma de texto de la Permanencia
 	 */
 	public String toString() {
 		return "[dia=" + getDia().format(FORMATO_DIA) + ", hora=" + getHora().format(FORMATO_HORA) + "]";

@@ -21,7 +21,7 @@ import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Profesor;
  * @see Profesor
  * @see ModeloReservasAulas
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  *
  */
 public class Profesores {
@@ -30,7 +30,7 @@ public class Profesores {
 	private List<Profesor> coleccionProfesores;
 
 	/**
-	 * Constructor por defecto. Inicializa la colecci髇 de profesores.
+	 * Constructor por defecto. Inicializa la colecci贸n de profesores.
 	 */
 	public Profesores() {
 		coleccionProfesores = new ArrayList<Profesor>();
@@ -49,11 +49,11 @@ public class Profesores {
 	}
 
 	/**
-	 * Guarda en la colecci髇 actual de profesores los que hay en la recibida como
-	 * par醡etro
+	 * Guarda en la colecci贸n actual de profesores los que hay en la recibida como
+	 * par谩metro
 	 *
 	 * @param profesores
-	 *            la colecci髇 a copiar
+	 *            la colecci贸n a copiar
 	 * @throws IllegalArgumentException
 	 *             si se intenta copiar un conjunto de profesores nulos
 	 */
@@ -67,8 +67,8 @@ public class Profesores {
 	 * Realiza la copia en profundidad de cada profesor para evitar aliasing
 	 *
 	 * @param profesores
-	 *            la colecci髇 de profesores a copiar
-	 * @return una copia de la colecci髇
+	 *            la colecci贸n de profesores a copiar
+	 * @return una copia de la colecci贸n
 	 */
 	private List<Profesor> copiaProfundaProfesores(List<Profesor> profesores) {
 		List<Profesor> copia = new ArrayList<Profesor>();
@@ -78,26 +78,26 @@ public class Profesores {
 	}
 
 	/**
-	 * Obtiene todos los profesores de la colecci髇 actual. Realiza una copia para
+	 * Obtiene todos los profesores de la colecci贸n actual. Realiza una copia para
 	 * evitar aliasing
 	 *
-	 * @return una copia de la colecci髇
+	 * @return una copia de la colecci贸n
 	 */
 	public List<Profesor> getProfesores() {
 		return copiaProfundaProfesores(this.coleccionProfesores);
 	}
 
 	/**
-	 * Obtiene el n鷐ero de profesores que existen en la colecci髇 actual
+	 * Obtiene el n煤mero de profesores que existen en la colecci贸n actual
 	 *
-	 * @return el n鷐ero de profesores
+	 * @return el n煤mero de profesores
 	 */
 	public int getNumProfesores() {
 		return this.coleccionProfesores.size();
 	}
 
 	/**
-	 * Guarda un profesor en la colecci髇
+	 * Guarda un profesor en la colecci贸n
 	 *
 	 * @param profesor
 	 *            el profesor a guardar
@@ -115,7 +115,7 @@ public class Profesores {
 	}
 
 	/**
-	 * Busca un profesor en la colecci髇
+	 * Busca un profesor en la colecci贸n
 	 *
 	 * @param profesor
 	 *            el profesor a buscar
@@ -130,7 +130,7 @@ public class Profesores {
 	}
 
 	/**
-	 * Borra un profesor de la colecci髇
+	 * Borra un profesor de la colecci贸n
 	 *
 	 * @param profesor
 	 *            el profesor a borrar
@@ -147,7 +147,7 @@ public class Profesores {
 	}
 
 	/**
-	 * Obtiene las salidas de todos los profesores de la colecci髇
+	 * Obtiene las salidas de todos los profesores de la colecci贸n
 	 *
 	 * @return la salida de los profesores
 	 */

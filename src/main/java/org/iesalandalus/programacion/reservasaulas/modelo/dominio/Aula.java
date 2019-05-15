@@ -7,7 +7,7 @@ import java.util.Objects;
  * Clase que representa un aula de un instituto
  *
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  *
  */
 public class Aula implements Serializable {
@@ -26,7 +26,7 @@ public class Aula implements Serializable {
 	 * @param puestos
 	 *            el n�mero de plazas que tiene el aula
 	 * @throws IllegalArgumentException
-	 *             si alguno de los par�metros no es v�lido
+	 *             si alguno de los par�metros no es válido
 	 */
 	public Aula(String nombre, int puestos) throws IllegalArgumentException {
 		setNombre(nombre);
@@ -49,12 +49,12 @@ public class Aula implements Serializable {
 	}
 
 	/**
-	 * M�todo set para el nombre del aula
+	 * Método set para el nombre del aula
 	 *
 	 * @param nombre
 	 *            el nombre del aula
 	 * @throws IllegalArgumentException
-	 *             si el nombre es nulo o vac�o
+	 *             si el nombre es nulo o vacío
 	 */
 	private void setNombre(String nombre) throws IllegalArgumentException {
 		if (nombre == null)
@@ -65,7 +65,7 @@ public class Aula implements Serializable {
 	}
 
 	/**
-	 * M�todo get para el nombre del aula
+	 * Método get para el nombre del aula
 	 *
 	 * @return el nombre del aula
 	 */
@@ -74,12 +74,12 @@ public class Aula implements Serializable {
 	}
 
 	/**
-	 * M�todo set para el n�mero de asientos de un aula
+	 * Método set para el número de asientos de un aula
 	 *
 	 * @param puestos
-	 *            los n�mero de asientos de un aula
+	 *            los número de asientos de un aula
 	 * @throws IllegalArgumentException
-	 *             si el n�mero de puestos no est�n entre el m�ximo y el m�nimo
+	 *             si el número de puestos no están entre el máximo y el mínimo
 	 */
 	private void setPuestos(int puestos) throws IllegalArgumentException {
 		if (puestos < MIN_PUESTOS || puestos > MAX_PUESTOS)
@@ -88,7 +88,7 @@ public class Aula implements Serializable {
 	}
 
 	/**
-	 * M�todo get para las plazas de un aula
+	 * Método get para las plazas de un aula
 	 *
 	 * @return las plazas del aula
 	 */
@@ -97,7 +97,7 @@ public class Aula implements Serializable {
 	}
 
 	/**
-	 * M�todo que calcula los puntos que resta reservar el aula
+	 * Método que calcula los puntos que resta reservar el aula
 	 *
 	 * @return la cantidad de puntos que cuesta reservar el aula
 	 */
@@ -106,16 +106,16 @@ public class Aula implements Serializable {
 	}
 
 	/**
-	 * M�todo hashCode de la clase. Sirve para diferenciar objetos
+	 * Método hashCode de la clase. Sirve para diferenciar objetos
 	 *
-	 * @return el c�digo hash del objeto
+	 * @return el código hash del objeto
 	 */
 	public int hashCode() {
 		return Objects.hash(nombre);
 	}
 
 	/**
-	 * M�todo equals de la clase
+	 * Método equals de la clase
 	 *
 	 * @return True si son iguales, False si no
 	 */
@@ -133,7 +133,7 @@ public class Aula implements Serializable {
 	/**
 	 * Representa un aula como una cadena de caracteres
 	 *
-	 * @return la representaci�n del aula
+	 * @return la representación del aula
 	 */
 	public String toString() {
 		return "[nombre=" + nombre + ", puestos=" + puestos + "]";

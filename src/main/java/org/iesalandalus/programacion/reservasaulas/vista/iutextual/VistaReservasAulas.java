@@ -21,7 +21,7 @@ import org.iesalandalus.programacion.reservasaulas.vista.IVistaReservasAulas;
  *
  * @see ModeloReservasAulas
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  *
  */
 public class VistaReservasAulas implements IVistaReservasAulas {
@@ -44,7 +44,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * M�todo que inicia el programa y mientras que no se elija la opci�n salir
+	 * Método que inicia el programa y mientras que no se elija la opción salir
 	 * sigue ofreciendo opciones.
 	 */
 	public void comenzar() {
@@ -52,9 +52,9 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 		do {
 			Consola.mostrarMenu();
 			try {
-				// Lectura de la opci�n
+				// Lectura de la opción
 				opcion = Opcion.getOpcionSegunOrdinal(Consola.elegirOpcion());
-				// Ejecuci�n de la opci�n
+				// Ejecución de la opción
 				opcion.ejecutar();
 			} catch (ArrayIndexOutOfBoundsException e) {
 				System.out.println(ERROR + "Introduzca un número de opción válido.");
@@ -71,7 +71,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden insertarAula de Opcion llamando al m�todo correspondiente de
+	 * Ejecuta la orden insertarAula de Opcion llamando al método correspondiente de
 	 * ModeloReservasAulas
 	 */
 	public void insertarAula() {
@@ -86,7 +86,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden borrarAula de Opcion llamando al m�todo correspondiente de
+	 * Ejecuta la orden borrarAula de Opcion llamando al método correspondiente de
 	 * ModeloReservasAulas
 	 */
 	public void borrarAula() {
@@ -101,7 +101,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden buscarAula de Opcion llamando al m�todo correspondiente de
+	 * Ejecuta la orden buscarAula de Opcion llamando al método correspondiente de
 	 * ModeloReservasAulas
 	 */
 	public void buscarAula() {
@@ -120,7 +120,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden listarAulas de Opcion llamando al m�todo correspondiente de
+	 * Ejecuta la orden listarAulas de Opcion llamando al método correspondiente de
 	 * ModeloReservasAulas
 	 */
 	public void listarAulas() {
@@ -133,7 +133,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden insertarProfesor de Opcion llamando al m�todo
+	 * Ejecuta la orden insertarProfesor de Opcion llamando al método
 	 * correspondiente de ModeloReservasAulas
 	 */
 	public void insertarProfesor() {
@@ -148,7 +148,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden borrarProfesor de Opcion llamando al m�todo correspondiente
+	 * Ejecuta la orden borrarProfesor de Opcion llamando al método correspondiente
 	 * de ModeloReservasAulas
 	 */
 	public void borrarProfesor() {
@@ -169,7 +169,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden buscarProfesor de Opcion llamando al m�todo correspondiente
+	 * Ejecuta la orden buscarProfesor de Opcion llamando al método correspondiente
 	 * de ModeloReservasAulas
 	 */
 	public void buscarProfesor() {
@@ -188,7 +188,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden listarProfesores de Opcion llamando al m�todo
+	 * Ejecuta la orden listarProfesores de Opcion llamando al método
 	 * correspondiente de ModeloReservasAulas
 	 */
 	public void listarProfesores() {
@@ -201,7 +201,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden realizarReserva de Opcion llamando al m�todo correspondiente
+	 * Ejecuta la orden realizarReserva de Opcion llamando al método correspondiente
 	 * de ModeloReservasAulas
 	 */
 	public void realizarReserva() {
@@ -235,11 +235,11 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * M�todo privado que se encarga de leer una reserva
+	 * Método privado que se encarga de leer una reserva
 	 *
 	 * @param profesor
 	 *            el profesor responsable de la reserva
-	 * @return null si el profesor o el aula no existen, la reserva le�da si existen
+	 * @return null si el profesor o el aula no existen, la reserva leída si existen
 	 *         ambos
 	 */
 	private Reserva leerReserva(Profesor profesor) {
@@ -265,7 +265,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden anularReserva de Opcion llamando al m�todo correspondiente
+	 * Ejecuta la orden anularReserva de Opcion llamando al método correspondiente
 	 * de ModeloReservasAulas
 	 */
 	public void anularReserva() {
@@ -303,7 +303,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden listarReservas de Opcion llamando al m�todo correspondiente
+	 * Ejecuta la orden listarReservas de Opcion llamando al método correspondiente
 	 * de ModeloReservasAulas
 	 */
 	public void listarReservas() {
@@ -316,7 +316,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden listarReservasAula de Opcion llamando al m�todo
+	 * Ejecuta la orden listarReservasAula de Opcion llamando al método
 	 * correspondiente de ModeloReservasAulas
 	 */
 	public void listarReservasAula() {
@@ -390,7 +390,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden listarReservasPermanencia de Opcion llamando al m�todo
+	 * Ejecuta la orden listarReservasPermanencia de Opcion llamando al método
 	 * correspondiente de ModeloReservasAulas
 	 */
 	public void listarReservasPermanencia() {
@@ -432,7 +432,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden consultarDisponibilidad de Opcion llamando al m�todo
+	 * Ejecuta la orden consultarDisponibilidad de Opcion llamando al método
 	 * correspondiente de ModeloReservasAulas
 	 */
 	public void consultarDisponibilidad() {

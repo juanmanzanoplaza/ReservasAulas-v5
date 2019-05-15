@@ -20,7 +20,7 @@ import org.iesalandalus.programacion.reservasaulas.vista.iutextual.VistaReservas
  * @see ModeloReservasAulas
  * @see VistaReservasAulas
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  *
  */
 public class ControladorReservasAulas implements IControladorReservasAulas {
@@ -54,7 +54,7 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Guarda los datos de la aplicaci�n en ficheros llamando a los m�todos del modelo
+	 * Guarda los datos de la aplicación en ficheros llamando a los métodos del modelo
 	 */
 	public void salir() {
 		modelo.escribirAulas();
@@ -71,7 +71,7 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	};
 
 	/**
-	 * Llama al m�todo insertarAula del modelo con el aula obtenida por par�metro
+	 * Llama al método insertarAula del modelo con el aula obtenida por parámetro
 	 *
 	 * @param insertar
 	 *            el aula que queremos insertar
@@ -85,7 +85,7 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo borrarAula del modelo con el aula obtenida por par�metro
+	 * Llama al método borrarAula del modelo con el aula obtenida por parámetro
 	 *
 	 * @param borrar
 	 *            el aula a borrar
@@ -99,7 +99,7 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo buscarAula del modelo con el aula obtenida por par�metro
+	 * Llama al método buscarAula del modelo con el aula obtenida por parámetro
 	 *
 	 * @param buscar
 	 *            el aula a buscar
@@ -110,9 +110,9 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo representarAulas del modelo
+	 * Llama al método representarAulas del modelo
 	 *
-	 * @return una colecci�n con las representaciones de todas las aulas guardadas
+	 * @return una colección con las representaciones de todas las aulas guardadas
 	 */
 	public List<String> representarAulas() {
 		return modelo.representarAulas();
@@ -127,8 +127,8 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo insertarProfesor del modelo con el profesor obtenido por
-	 * par�metro
+	 * Llama al método insertarProfesor del modelo con el profesor obtenido por
+	 * parámetro
 	 *
 	 * @param insertar
 	 *            el profesor a insertar
@@ -142,8 +142,8 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo borrarProfesor del modelo con el profesor obtenido por
-	 * par�metro
+	 * Llama al método borrarProfesor del modelo con el profesor obtenido por
+	 * parámetro
 	 *
 	 * @param borrar
 	 *            el profesor a borrar
@@ -157,8 +157,8 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo buscarProfesor del modelo con el profesor obtenido por
-	 * par�metro
+	 * Llama al método buscarProfesor del modelo con el profesor obtenido por
+	 * parámetro
 	 *
 	 * @param buscar
 	 *            el profesor a buscar
@@ -169,9 +169,9 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo representarProfesores del modelo
+	 * Llama al método representarProfesores del modelo
 	 *
-	 * @return una colecci�n con la representaci�n de cada profesor en forma de
+	 * @return una colección con la representación de cada profesor en forma de
 	 *         cadena
 	 */
 	public List<String> representarProfesores() {
@@ -183,7 +183,7 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo realizarReserva del modelo
+	 * Llama al método realizarReserva del modelo
 	 *
 	 * @param realizar
 	 *            la reserva a realizar
@@ -197,7 +197,7 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo anularReserva del modelo
+	 * Llama al método anularReserva del modelo
 	 *
 	 * @param anular
 	 *            la reserva a anular
@@ -211,9 +211,9 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo representarReservas del modelo
+	 * Llama al método representarReservas del modelo
 	 *
-	 * @return una colecci�n con la representaci�n de cada reserva en forma de
+	 * @return una colección con la representación de cada reserva en forma de
 	 *         cadena
 	 */
 	public List<String> representarReservas() {
@@ -221,12 +221,12 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo getReservasAula del modelo
+	 * Llama al método getReservasAula del modelo
 	 *
 	 * @param aula
 	 *            el aula reservada
-	 * @return una colecci�n con las reservas realizadas sobre el aula recibida como
-	 *         par�metro
+	 * @return una colección con las reservas realizadas sobre el aula recibida como
+	 *         parámetro
 	 * @throws IllegalArgumentException
 	 *             si el aula es nula
 	 */
@@ -235,12 +235,12 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo getReservasProfesor del modelo
+	 * Llama al método getReservasProfesor del modelo
 	 *
 	 * @param profesor
-	 *            el profesor a nombre del que est�n las reservas
-	 * @return una colecci�n con las reservas realizadas a nombre del profesor
-	 *         recibido como par�metro
+	 *            el profesor a nombre del que están las reservas
+	 * @return una colección con las reservas realizadas a nombre del profesor
+	 *         recibido como parámetro
 	 * @throws IllegalArgumentException
 	 *             si el profesor es nulo
 	 */
@@ -249,12 +249,12 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo getReservasPermanencia del modelo
+	 * Llama al método getReservasPermanencia del modelo
 	 *
 	 * @param permanencia
-	 *            la permanencia para la que est�n hechas las reservas
-	 * @return una colecci�n con las reservas realizadas durante la permanencia
-	 *         recibida como par�metro
+	 *            la permanencia para la que están hechas las reservas
+	 * @return una colección con las reservas realizadas durante la permanencia
+	 *         recibida como parámetro
 	 * @throws IllegalArgumentException
 	 *             si la permanencia es nula
 	 */
@@ -263,18 +263,18 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	}
 
 	/**
-	 * Llama al m�todo consultarDisponibilidad del modelo
+	 * Llama al método consultarDisponibilidad del modelo
 	 *
 	 * @param aula
-	 *            el aula que queremos comprobar si est� disponible
+	 *            el aula que queremos comprobar si está disponible
 	 * @param permanencia
 	 *            la permanencia sobre la que queremos consultar la disponibilidad
-	 * @return true si el aula est� disponible para esa permanencia, false si no lo
-	 *         est�
+	 * @return true si el aula está disponible para esa permanencia, false si no lo
+	 *         está
 	 * @throws IllegalArgumentException
 	 *             si el aula o la permanencia son nulas, o si el tipo de
 	 *             permanencia consultado no coincide con el de las reservas
-	 *             realizaddas sobre ese aula ese d�a
+	 *             realizaddas sobre ese aula ese día
 	 */
 	public boolean consultarDisponibilidad(Aula aula, Permanencia permanencia) throws IllegalArgumentException {
 		return modelo.consultarDisponibilidad(aula, permanencia);

@@ -6,12 +6,12 @@ import java.util.Objects;
 
 /**
  * Clase que representa durante cuanto tiempo se reserva un aula. Esta clase
- * permite que se pueda reservar un aula por un tramo completo (maÒana o tarde)
+ * permite que se pueda reservar un aula por un tramo completo (ma√±ana o tarde)
  * 
  * @see Tramo
  * @see Permanencia
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  *
  */
 public class PermanenciaPorTramo extends Permanencia implements Serializable {
@@ -23,11 +23,11 @@ public class PermanenciaPorTramo extends Permanencia implements Serializable {
 	 * Constructor de la clase
 	 * 
 	 * @param dia
-	 *            el dÌa que es reservada el aula
+	 *            el d√≠a que es reservada el aula
 	 * @param tramo
 	 *            el tramo para el que es reservada el aula
 	 * @throws IllegalArgumentException
-	 *             si el dÌa o el tramo no son v·lidos
+	 *             si el d√≠a o el tramo no son v√°lidos
 	 */
 	public PermanenciaPorTramo(LocalDate dia, Tramo tramo) throws IllegalArgumentException {
 		super(dia);
@@ -38,11 +38,11 @@ public class PermanenciaPorTramo extends Permanencia implements Serializable {
 	 * Constructor de la clase
 	 * 
 	 * @param dia
-	 *            el dÌa que es reservada el aula
+	 *            el d√≠a que es reservada el aula
 	 * @param tramo
 	 *            el tramo para el que es reservada el aula
 	 * @throws IllegalArgumentException
-	 *             si el dÌa o el tramo par·metros no son v·lidos
+	 *             si el d√≠a o el tramo par√°metros no son v√°lidos
 	 */
 	public PermanenciaPorTramo(String dia, Tramo tramo) throws IllegalArgumentException {
 		super(dia);
@@ -65,7 +65,7 @@ public class PermanenciaPorTramo extends Permanencia implements Serializable {
 	}
 
 	/**
-	 * MÈtodo get para el tramo de la reserva
+	 * M√©todo get para el tramo de la reserva
 	 * 
 	 * @return el tramo para el que es reservada el aula
 	 */
@@ -74,7 +74,7 @@ public class PermanenciaPorTramo extends Permanencia implements Serializable {
 	}
 
 	/**
-	 * MÈtodo set para el tramo de la reserva
+	 * M√©todo set para el tramo de la reserva
 	 * 
 	 * @param tramo
 	 *            el tramo para el que es reservada el aula
@@ -88,25 +88,25 @@ public class PermanenciaPorTramo extends Permanencia implements Serializable {
 	}
 
 	/**
-	 * MÈtodo get para el n˙mero de puntos que cuesta reservar esta Permanencia
+	 * M√©todo get para el n√∫mero de puntos que cuesta reservar esta Permanencia
 	 * 
-	 * @return el n˙mero de puntos que cuesta reservar esta Permanencia
+	 * @return el n√∫mero de puntos que cuesta reservar esta Permanencia
 	 */
 	public int getPuntos() {
 		return PUNTOS;
 	}
 
 	/**
-	 * MÈtodo hashCode para la clase. Sirve para diferenciar objetos.
+	 * M√©todo hashCode para la clase. Sirve para diferenciar objetos.
 	 * 
-	 * @return el cÛdigo hash correspondiente al objeto
+	 * @return el c√≥digo hash correspondiente al objeto
 	 */
 	public int hashCode() {
 		return Objects.hash(dia, tramo, PUNTOS);
 	}
 
 	/**
-	 * MÈtodo equals para la clase. Compara dos PermanenciaPorTramo
+	 * M√©todo equals para la clase. Compara dos PermanenciaPorTramo
 	 * 
 	 * @return true si son iguales, false si no lo son
 	 */
@@ -120,10 +120,10 @@ public class PermanenciaPorTramo extends Permanencia implements Serializable {
 	}
 
 	/**
-	 * MÈtodo toString de la clase. Define como debe mostrarse una
+	 * M√©todo toString de la clase. Define como debe mostrarse una
 	 * PermanenciaPorTramo
 	 * 
-	 * @return la representaciÛn en forma de texto de la Permanencia
+	 * @return la representaci√≥n en forma de texto de la Permanencia
 	 */
 	public String toString() {
 		return "[dia=" + getDia().format(FORMATO_DIA) + ", tramo=" + tramo + "]";

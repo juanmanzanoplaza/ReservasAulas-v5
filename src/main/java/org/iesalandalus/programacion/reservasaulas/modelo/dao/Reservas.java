@@ -27,7 +27,7 @@ import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Pe
  * @see Reserva
  * @see ModeloReservasAulas
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  *
  */
 public class Reservas {
@@ -37,7 +37,7 @@ public class Reservas {
 	private List<Reserva> coleccionReservas;
 
 	/**
-	 * Constructor por defecto. Inicializa la colecci�n de profesores
+	 * Constructor por defecto. Inicializa la colección de profesores
 	 */
 	public Reservas() {
 		coleccionReservas = new ArrayList<Reserva>();
@@ -56,11 +56,11 @@ public class Reservas {
 	}
 
 	/**
-	 * Guarda en la colecci�n actual de reservas los que hay en la colecci�n
-	 * recibida como par�metro
+	 * Guarda en la colección actual de reservas los que hay en la colección
+	 * recibida como parámetro
 	 *
 	 * @param reservas
-	 *            la colecci�n a copiar
+	 *            la colección a copiar
 	 * @throws IllegalArgumentException
 	 *             si se intenta copiar un conjunto de reservas nulo
 	 */
@@ -74,8 +74,8 @@ public class Reservas {
 	 * Realiza la copia en profundidad de cada reserva para evitar aliasing
 	 *
 	 * @param reservas
-	 *            la colecci�n de reservas a copiar
-	 * @return una copia de la colecci�n
+	 *            la colección de reservas a copiar
+	 * @return una copia de la colección
 	 */
 	private List<Reserva> copiaProfundaReservas(List<Reserva> reservas) {
 		List<Reserva> copia = new ArrayList<Reserva>();
@@ -85,26 +85,26 @@ public class Reservas {
 	}
 
 	/**
-	 * Obtiene todas las reservas de la colecci�n actual. Realiza una copia para
+	 * Obtiene todas las reservas de la colección actual. Realiza una copia para
 	 * evitar aliasing
 	 *
-	 * @return una copia de la colecci�n
+	 * @return una copia de la colección
 	 */
 	public List<Reserva> getReservas() {
 		return copiaProfundaReservas(this.coleccionReservas);
 	}
 
 	/**
-	 * Obtiene el n�mero de reservas que existen en la colecci�n actual
+	 * Obtiene el número de reservas que existen en la colección actual
 	 *
-	 * @return el n�mero de reservas
+	 * @return el número de reservas
 	 */
 	public int getNumReservas() {
 		return this.coleccionReservas.size();
 	}
 
 	/**
-	 * Guarda una reserva en la colecci�n
+	 * Guarda una reserva en la colección
 	 *
 	 * @param reserva
 	 *            la reserva a guardar
@@ -114,7 +114,7 @@ public class Reservas {
 	 *             si la reserva ya existe
 	 */
 	public void insertar(Reserva reserva) throws OperationNotSupportedException, IllegalArgumentException {
-		// Comprobamos que es una reserva v�lida
+		// Comprobamos que es una reserva válida
 		if (reserva == null)
 			throw new IllegalArgumentException("No se puede realizar una reserva nula.");
 		if (this.coleccionReservas.contains(reserva))
@@ -125,7 +125,9 @@ public class Reservas {
 		if (getPuntosGastadosReserva(reserva) > MAX_PUNTOS_PROFESOR_MES)
 			throw new OperationNotSupportedException(
 					"Esta reserva excede los puntos máximos por mes para dicho profesor.");
-		Reserva mismoDia = getReservaDia(reserva.getPermanencia().getDia());
+
+		Reserva mismoDia = getReservaDiaAula(reserva.getPermanencia().getDia(), reserva.getAula());
+		//Reserva mismoDia = getReservaDia(reserva.getPermanencia().getDia());
 		if (mismoDia != null) {
 			if (mismoDia.getPermanencia() instanceof PermanenciaPorTramo
 					&& reserva.getPermanencia() instanceof PermanenciaPorHora)
@@ -137,7 +139,8 @@ public class Reservas {
 						"Ya se ha realizado una reserva por hora para este día y aula.");
 		}
 
-		// Si ha pasado todas las comprobaciones a�adimos la reserva
+
+		// Si ha pasado todas las comprobaciones añadimos la reserva
 		coleccionReservas.add(reserva);
 	}
 
@@ -165,7 +168,7 @@ public class Reservas {
 	 * @param aInsertar
 	 *            la reserva de la que queremos obtener los puntos gastados en ese
 	 *            mes por ese profesor
-	 * @return el n�mero de puntos gastadods en el mes de la reserva por el profesor
+	 * @return el número de puntos gastadods en el mes de la reserva por el profesor
 	 *         de la reserva
 	 */
 	private float getPuntosGastadosReserva(Reserva aInsertar) {
@@ -181,11 +184,11 @@ public class Reservas {
 	}
 
 	/**
-	 * Obtiene las reservas correspondientes al profesor y d�a obtenidos por
-	 * par�metro
+	 * Obtiene las reservas correspondientes al profesor y día obtenidos por
+	 * parámetro
 	 *
 	 * @param reservador
-	 *            el profesor a cuyo nombre est�n las reservas
+	 *            el profesor a cuyo nombre están las reservas
 	 * @param dia
 	 *            la fecha de la que obtener el mes
 	 * @return una lista con las reservas correspondientes a ese profesor durante el
@@ -206,16 +209,16 @@ public class Reservas {
 		return devolver;
 	}
 
-	
-	/**
-	 * Obtiene una reserva realizada el d�a obtenido como par�metro
-	 *
-	 * @param dia
-	 *            la fecha de la que queremos obtener una reserva
-	 * @return null si no hay reservas para ese d�a, la primera reserva que
-	 *         encuentra si la hay
-	 */
-	private Reserva getReservaDia(LocalDate dia) {
+	//ANTIGUO MÉTODO PARA COMPROBAR EL TIPO DE RESERVA
+	///**
+	//* Obtiene una reserva realizada el día obtenido como parámetro
+	// *
+	//* @param dia
+	//*            la fecha de la que queremos obtener una reserva
+	//* @return null si no hay reservas para ese día, la primera reserva que
+	//*         encuentra si la hay
+	//*/
+	/**private Reserva getReservaDia(LocalDate dia) {
 		if(dia==null)
 			throw new IllegalArgumentException("El día no puede ser nulo.");
 		for(Reserva reserva : coleccionReservas) {
@@ -224,10 +227,29 @@ public class Reservas {
 		}
 		return null;
 	}
-	 
+	**/
 
 	/**
-	 * Busca una reserva en la colecci�n
+	 * Obtiene una reserva realizada el mismo día sobre el mismo aula obtenidos como parámetros
+	 * @param dia la fecha de la que queremos obtener la reserva
+	 * @param aula el aula del que queremos obtener la reserva
+	 * @return null si no hay reservas para ese día y aula, la primera reserva para estos que encuentra si la hay
+	 */
+	private Reserva getReservaDiaAula(LocalDate dia, Aula aula) {
+		if(dia==null)
+			throw new IllegalArgumentException("El día no puede ser nulo.");
+		if(aula==null)
+			throw new IllegalArgumentException("El aula no puede ser nula.");
+		for(Reserva reserva : coleccionReservas) {
+			if(reserva.getPermanencia().getDia().equals(dia) && reserva.getAula().equals(aula))
+				return new Reserva(reserva);
+		}
+		return null;
+	}
+
+
+	/**
+	 * Busca una reserva en la colección
 	 *
 	 * @param reserva
 	 *            la reserva a buscar
@@ -242,7 +264,7 @@ public class Reservas {
 	}
 
 	/**
-	 * Borra una reserva de la colecci�n
+	 * Borra una reserva de la colección
 	 *
 	 * @param reserva
 	 *            la reserva a borrar
@@ -254,13 +276,13 @@ public class Reservas {
 	public void borrar(Reserva reserva) throws OperationNotSupportedException, IllegalArgumentException {
 		if (reserva == null)
 			throw new IllegalArgumentException("No se puede anular una reserva nula.");
-		// Si no consigue eliminar la reserva lanza la excepci�n
+		// Si no consigue eliminar la reserva lanza la excepción
 		if (!this.coleccionReservas.remove(reserva))
 			throw new OperationNotSupportedException("La reserva a anular no existe.");
 	}
 
 	/**
-	 * Obtiene las salidas de todas las reservas de la colecci�n
+	 * Obtiene las salidas de todas las reservas de la colección
 	 *
 	 * @return la salida de las reservas
 	 */
@@ -332,17 +354,17 @@ public class Reservas {
 	}
 
 	/**
-	 * Comprueba si un aula est� disponible en una fecha y tramos indicados
+	 * Comprueba si un aula está disponible en una fecha y tramos indicados
 	 *
 	 * @param aula
 	 *            el aula a comprobar
 	 * @param permanencia
 	 *            la fecha y tramo en las que comprobar el aula
-	 * @return True si est� disponible, False si est� reservada
+	 * @return True si está disponible, False si está reservada
 	 * @throws IllegalArgumentException
 	 *             si el aula o la permanencia son nulas, o si el tipo de
 	 *             permanencia consultado no coincide con el de las reservas
-	 *             realizadas sobre ese aula ese d�a
+	 *             realizadas sobre ese aula ese día
 	 */
 	public boolean consultarDisponibilidad(Aula aula, Permanencia permanencia) throws IllegalArgumentException {
 		if (aula == null)

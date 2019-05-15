@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 /**
- * Clase que nos permite leer datos por teclado asegur�ndose que el tipo de dato
+ * Clase que nos permite leer datos por teclado asegurándose que el tipo de dato
  * introducido es compatible con el esperado.
  * 
  * @author pepino
@@ -23,7 +23,7 @@ public class Entrada {
 	/**
 	 * M�todo est�tico que lee una cadena por teclado
 	 * 
-	 * @return la cadena le�da
+	 * @return la cadena leída
 	 */
 	public static String cadena() {
 		String valor = "";
@@ -38,10 +38,10 @@ public class Entrada {
 	}
 
 	/**
-	 * M�todo est�tico que lee un entero por teclado y se asegura que el valor
+	 * Método estático que lee un entero por teclado y se asegura que el valor
 	 * introducido es compatible con un entero
 	 * 
-	 * @return el entero le�do
+	 * @return el entero leído
 	 */
 	public static int entero() {
 		int valor = 0;
@@ -58,10 +58,10 @@ public class Entrada {
 	}
 
 	/**
-	 * M�todo est�tico que lee un entero largo (long) por teclado y se asegura que
+	 * Método estático que lee un entero largo (long) por teclado y se asegura que
 	 * el valor introducido es compatible con un entero largo
 	 * 
-	 * @return el entero largo le�do
+	 * @return el entero largo leído
 	 */
 	public static long enteroLargo() {
 		long valor = 0;
@@ -78,10 +78,10 @@ public class Entrada {
 	}
 
 	/**
-	 * M�todo est�tico que lee un real (float) por teclado y se asegura que el valor
+	 * Método estático que lee un real (float) por teclado y se asegura que el valor
 	 * introducido es compatible con un real
 	 * 
-	 * @return el real le�do
+	 * @return el real leído
 	 */
 	public static float real() {
 		float valor = 0;
@@ -98,10 +98,10 @@ public class Entrada {
 	}
 
 	/**
-	 * M�todo est�tico que lee un real de doble precisi�n (double) por teclado y se
-	 * asegura que el valor introducido es compatible con un real de doble precisi�n
+	 * M�todo estático que lee un real de doble precisión (double) por teclado y se
+	 * asegura que el valor introducido es compatible con un real de doble precisión
 	 * 
-	 * @return el real de doble precisi�n le�do
+	 * @return el real de doble precisión leído
 	 */
 	public static double realDoble() {
 		double valor = 0;
@@ -118,10 +118,10 @@ public class Entrada {
 	}
 
 	/**
-	 * Método est�tico que lee un caracter por teclado y se asegura que el valor
+	 * Método estático que lee un caracter por teclado y se asegura que el valor
 	 * introducido es compatible con un caracter
 	 * 
-	 * @return el caracter le�do
+	 * @return el caracter leído
 	 */
 	public static char caracter() {
 		String valor = "";

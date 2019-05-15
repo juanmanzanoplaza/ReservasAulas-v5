@@ -39,14 +39,14 @@
 					<TableView fx:id="tvReservasAulas" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: FCD7AA;">
 						<columns>
                                   <TableColumn fx:id="tcProfesorAulas" prefWidth="75.0" text="Profesor" />
-                                    <TableColumn fx:id="tcDiaAulas" prefWidth="75.0" text="Día" />
-                                    <TableColumn fx:id="tcHoraTramoAulas" prefWidth="75.0" text="Hora/Tramo" />
+                                    <TableColumn fx:id="tcDiaAulas" prefWidth="125.0" text="Día" />
+                                    <TableColumn fx:id="tcHoraTramoAulas" prefWidth="125.0" text="Hora/Tramo" />
                                     <TableColumn fx:id="tcPuntosAulas" prefWidth="75.0" text="Puntos" />
                                 </columns>
                                  <contextMenu>
                                     <ContextMenu fx:id="cmReservasAula">
                                       <items>
-                                        <MenuItem fx:id="miAnularReservaAula" mnemonicParsing="false" text="Anular reserva" />
+                                        <MenuItem fx:id="miAnularReservaAula" onAction="#anularReservaAula" mnemonicParsing="false" text="Anular reserva" />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>
@@ -74,7 +74,7 @@
                                 <columns>
                                   <TableColumn fx:id="tcNombreProfesores" prefWidth="75.0" text="Nombre" />
                                   <TableColumn fx:id="tcCorreoProfesores" prefWidth="75.0" text="Correo" />
-                                    <TableColumn fx:id="tcTelefonoProfesores" prefWidth="75.0" text="Teléfono" />
+                                    <TableColumn fx:id="tcTelefonoProfesores" prefWidth="100.0" text="Teléfono" />
                                 </columns>
                                  <contextMenu>
                                     <ContextMenu fx:id="cmProfesores">
@@ -89,14 +89,14 @@
                               <TableView fx:id="tvReservasProfesores" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: FCD7AA;">
                                 <columns>
                                   <TableColumn fx:id="tcAulaProfesores" prefWidth="75.0" text="Aula" />
-                                  <TableColumn fx:id="tcDiaProfesores" prefWidth="75.0" text="Día" />
-                                    <TableColumn fx:id="tcHoraTramoProfesores" prefWidth="75.0" text="Hora/Tramo" />
+                                  <TableColumn fx:id="tcDiaProfesores" prefWidth="125.0" text="Día" />
+                                    <TableColumn fx:id="tcHoraTramoProfesores" prefWidth="125.0" text="Hora/Tramo" />
                                     <TableColumn fx:id="tcPuntosProfesores" prefWidth="75.0" text="Puntos" />
                                 </columns>
                                 <contextMenu>
                                     <ContextMenu fx:id="cmReservasProfesor">
                                       <items>
-                                        <MenuItem fx:id="miAnularReservaProfesor" mnemonicParsing="false" text="Anular reserva" />
+                                        <MenuItem fx:id="miAnularReservaProfesor" onAction="#anularReservaProfesor" mnemonicParsing="false" text="Anular reserva" />
                                       </items>
                                     </ContextMenu>
                                  </contextMenu>
@@ -123,8 +123,8 @@
                                 <columns>
                                   <TableColumn fx:id="tcAulaReservas" prefWidth="75.0" text="Aula" />
                                   <TableColumn fx:id="tcProfesorReservas" prefWidth="75.0" text="Profesor" />
-                                    <TableColumn fx:id="tcDiaReservas" prefWidth="75.0" text="Día" />
-                                    <TableColumn fx:id="tcHoraTramoReservas" prefWidth="75.0" text="Hora/Tramo" />
+                                    <TableColumn fx:id="tcDiaReservas" prefWidth="125.0" text="Día" />
+                                    <TableColumn fx:id="tcHoraTramoReservas" prefWidth="125.0" text="Hora/Tramo" />
                                     <TableColumn fx:id="tcPuntosReservas" prefWidth="75.0" text="Puntos" />
                                 </columns>
                                 <contextMenu>

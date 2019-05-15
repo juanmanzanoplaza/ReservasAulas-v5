@@ -8,7 +8,7 @@ import org.iesalandalus.programacion.reservasaulas.vista.iutextual.VistaReservas
  *
  * @see VistaReservasAulas
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 4
  *
  */
 public interface IVistaReservasAulas {

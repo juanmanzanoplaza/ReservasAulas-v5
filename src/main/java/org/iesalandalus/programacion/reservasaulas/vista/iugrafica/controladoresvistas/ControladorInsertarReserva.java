@@ -32,6 +32,13 @@ import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 
+/**
+ * Controlador del fichero fxml InsertarReserva
+ * 
+ * @author Juan Antonio Manzano Plaza
+ * @version 4
+ *
+ */
 public class ControladorInsertarReserva implements Initializable {
 
 	private IControladorReservasAulas controladorMVC;
@@ -52,10 +59,12 @@ public class ControladorInsertarReserva implements Initializable {
 	private ToggleGroup tgTipoPermanencia;
 	private ToggleGroup tgTipoTramo;
 
-	private static final DateTimeFormatter ER_DIA = DateTimeFormatter.ofPattern("dd/MM/uuuu");
-	private static final DateTimeFormatter ER_HORA = DateTimeFormatter.ofPattern("HH:mm");
 	private static final String CORREO_VALIDO = "a@a.a";
+	private static final int PUESTOS_VALIDOS = 50;
 
+	/**
+	 * Método initialize de la interfaz Initializable
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		inicializaCalendario();
@@ -65,23 +74,46 @@ public class ControladorInsertarReserva implements Initializable {
 		rbTarde.setVisible(false);
 		lbTramo.setVisible(false);
 	}
-	
+
+	/**
+	 * Método set para el atributo aula
+	 * 
+	 * @param aula el aula que obtiene al llamar a la clase desde el menú contextual de la TableView de Aulas
+	 */
 	public void setAula(Aula aula) {
 		tfAula.setText(aula.getNombre());
 	}
-	
+
+	/**
+	 * Método set para el atributo profesor
+	 * 
+	 * @param profesor el aula que obtiene al llamar a la clase desde el menú contextual de la TableView de Profesores
+	 */
 	public void setProfesor(Profesor profesor) {
 		tfProfesor.setText(profesor.getNombre());
 	}
 
+	/**
+	 * Método set para el controlador del modelo vista controlador
+	 * 
+	 * @param controlador el controlador del programa
+	 */
 	public void setControladorMVC(IControladorReservasAulas controlador) {
 		controladorMVC = controlador;
 	}
 
+	/**
+	 * Método set para la ObservableList de reservas
+	 * 
+	 * @param reservas la lista de reservas de la ventana principal
+	 */
 	public void setReservas(ObservableList<Reserva> reservas) {
 		this.reservas = reservas;
 	}
 
+	/**
+	 * Método que inicializa el calenddario de la escena
+	 */
 	public void inicializaCalendario() {
 		final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>(){
 
@@ -102,9 +134,12 @@ public class ControladorInsertarReserva implements Initializable {
 
 		};
 		dpDia.setDayCellFactory(dayCellFactory);
-		
+
 	}
 
+	/**
+	 * Método que agrupa los RadioButton correspondientes al tipo de permanencia en un ToggleGroup
+	 */
 	public void agrupaRbTipoPermanencia() {
 		tgTipoPermanencia = new ToggleGroup();
 		rbHora.setToggleGroup(tgTipoPermanencia);
@@ -113,6 +148,9 @@ public class ControladorInsertarReserva implements Initializable {
 		tgTipoPermanencia.selectedToggleProperty().addListener((observable, oldValue, newValue) -> muestraHora());
 	}
 
+	/**
+	 * Método que agrupa los RadioButton correspondientes al tipo de tramo en un ToggleGroup
+	 */
 	public void agrupaRbTipoTramo() {
 		tgTipoTramo = new ToggleGroup();
 		rbManana.setToggleGroup(tgTipoTramo);
@@ -120,6 +158,9 @@ public class ControladorInsertarReserva implements Initializable {
 		rbManana.setSelected(true);
 	}
 
+	/**
+	 * Muestra u oculta el Label, TextField y RadioButtons correspondientes al tipo de Permanencia seleccionada
+	 */
 	private void muestraHora() {
 		RadioButton seleccionado = (RadioButton) tgTipoPermanencia.getSelectedToggle();
 
@@ -138,50 +179,93 @@ public class ControladorInsertarReserva implements Initializable {
 		}
 	}
 
+	/**
+	 * Método que gestiona el evento de pulsar el botón aceptar
+	 * 
+	 * @param event el evento que gestiona
+	 */
 	@FXML private void aceptar (ActionEvent event) {
-		boolean error = false;
+		//Declaración de variables necesarias para el modelo.
 		Reserva reserva = null;
-		LocalTime hora = null;
-		String dia = null;
-
+		String hora = tfHora.getText();
+		LocalDate dia = dpDia.getValue();
+		boolean error = false;
+		Profesor profesor = null;
+		Aula aula = null;
+		
+		//Declaración de variables necesarias para la ejecución.
+		RadioButton permanenciaTipo = (RadioButton) tgTipoPermanencia.getSelectedToggle();
+		RadioButton tramoTipo = (RadioButton) tgTipoTramo.getSelectedToggle();
+		Stage escenario = (Stage) ((Node) event.getSource()).getScene().getWindow();
+		
+		//Ejecucion
 		try {
-			dia = dpDia.getValue().format(ER_DIA);//LocalDate.parse(dpDia.getValue().format(ER_DIA), ER_DIA);
-		} catch (DateTimeParseException e) {
-			Dialogos.mostrarDialogoError("Insertar Reserva", "El formato del dia no es correcto.");
+			profesor = controladorMVC.buscarProfesor(new Profesor(tfProfesor.getText(), CORREO_VALIDO));
+		} catch(Exception e) {
+			Dialogos.mostrarDialogoError("Error en el profesor", e.getMessage());
 			error = true;
 		}
-
 		if(!error) {
+		try {
+			aula = controladorMVC.buscarAula(new Aula(tfAula.getText(), PUESTOS_VALIDOS));
+		} catch (Exception e) {
+			Dialogos.mostrarDialogoError("Error en el aula", e.getMessage());
+		}
+		}
+		if(!error && profesor==null) {
+			Dialogos.mostrarDialogoError("Profesor inexistente", "El profesor especificado no existe");
+			error = true;
+		}
+		if(!error && aula==null) {
+			Dialogos.mostrarDialogoError("Aula inexistente", "El aula especificada no existe");
+			error = true;
+		}
+		
+		if(!error && permanenciaTipo == rbHora) {
 			try {
-				RadioButton permanenciaTipo = (RadioButton) tgTipoPermanencia.getSelectedToggle();
-				Stage escenario = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-				if(permanenciaTipo == rbHora) {
-					try {
-						hora = LocalTime.parse(tfHora.getText(), ER_HORA);
-					} catch (DateTimeParseException e) {
-						Dialogos.mostrarDialogoError("Insertar Reserva", "El formato de la hora no es correcto.");
-						error = true;
-					}
-					if(!error)
-						reserva = new Reserva(new Profesor(tfProfesor.getText(), CORREO_VALIDO), new Aula(tfAula.getText(), 10), new PermanenciaPorHora(dia.toString(), hora.toString()));
-				} else {
-					RadioButton tramo = (RadioButton) tgTipoTramo.getSelectedToggle();
-					if(tramo == rbManana)
-						reserva = new Reserva(new Profesor(tfProfesor.getText(), CORREO_VALIDO), new Aula(tfAula.getText(), 10), new PermanenciaPorTramo(dia.toString(), Tramo.MANANA));
-					else
-						reserva = new Reserva(new Profesor(tfProfesor.getText(), CORREO_VALIDO), new Aula(tfAula.getText(), 10), new PermanenciaPorTramo(dia.toString(), Tramo.TARDE));
-				}
+				reserva = new Reserva(profesor, aula, new PermanenciaPorHora(dia, hora));
 				controladorMVC.realizarReserva(reserva);
 				reservas.add(reserva);
+				Dialogos.mostrarDialogoInformacion("Realizar reserva", "Reserva realizada correctamente");
 				escenario.close();
-
-			} catch (OperationNotSupportedException | IllegalArgumentException | NullPointerException e) {
-				Dialogos.mostrarDialogoError("Insertar Reserva", e.getMessage());
+			} catch (Exception e) {
+				Dialogos.mostrarDialogoError("Realizar reserva", e.getMessage());
+			}
+		}
+		
+		if(!error && permanenciaTipo == rbTramo) {
+			if(tramoTipo == rbManana) {
+				try {
+					reserva =new Reserva(profesor, aula, new PermanenciaPorTramo(dia, Tramo.MANANA));
+					controladorMVC.realizarReserva(reserva);
+					reservas.add(reserva);
+					Dialogos.mostrarDialogoInformacion("Realizar reserva", "Reserva realizada correctamente");					
+					escenario.close();
+				} catch (Exception e) {
+					Dialogos.mostrarDialogoError("Realizar reserva", e.getMessage());
+					error = true;
+				}
+			}
+			if(!error && tramoTipo == rbTarde) {
+				try {
+					reserva = new Reserva(profesor, aula, new PermanenciaPorTramo(dia, Tramo.TARDE));
+					controladorMVC.realizarReserva(reserva);
+					reservas.add(reserva);
+					Dialogos.mostrarDialogoInformacion("Realizar reserva", "Reserva realizada correctamente");
+					escenario.close();
+				} catch (Exception e) {
+					Dialogos.mostrarDialogoError("Realizar reserva", e.getMessage());
+					error = true;
+				}
 			}
 		}
 	}
 
+	/**
+	 * Método que gestiona el evento de haber pulsado el botón cancelar
+	 * 
+	 * @param event el evento que gestiona
+	 */
 	@FXML private void cancelar(ActionEvent event) {
 		Stage escenario = (Stage)((Node) event.getSource()).getScene().getWindow();
 		if(Dialogos.mostrarDialogoConfirmaion("Salir", "¿Estás seguro de que no quieres realizar una reserva?", escenario))
