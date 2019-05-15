@@ -352,6 +352,8 @@ public class ControladorVentanaPrincipal implements Initializable{
 				controladorMVC.anularReserva(reserva);
 				reservas.remove(reserva);
 				Dialogos.mostrarDialogoInformacion("Anular reserva", "Reserva anulada satisfactoriamente", null);
+				reservasAula.setAll(controladorMVC.getReservasAula(tvAulas.getSelectionModel().getSelectedItem()));
+				tvReservasProfesores.setItems(reservasAula);
 			}
 		} catch (Exception e) {
 			Dialogos.mostrarDialogoError("Anular reserva", e.getMessage());
@@ -371,6 +373,8 @@ public class ControladorVentanaPrincipal implements Initializable{
 				controladorMVC.anularReserva(reserva);
 				reservas.remove(reserva);
 				Dialogos.mostrarDialogoInformacion("Anular reserva", "Reserva anulada satisfactoriamente", null);
+				reservasProfesor.setAll(controladorMVC.getReservasProfesor(tvProfesores.getSelectionModel().getSelectedItem()));
+				tvReservasAulas.setItems(reservasProfesor);
 			}
 		} catch (Exception e) {
 			Dialogos.mostrarDialogoError("Anular reserva", e.getMessage());
