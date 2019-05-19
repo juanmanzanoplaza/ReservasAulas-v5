@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.reservasaulas.modelo.dao;
+package org.iesalandalus.programacion.reservasaulas.modelo.ficheros.dao;
 
 import java.io.EOFException;
 import java.io.File;
@@ -11,8 +11,8 @@ import java.util.List;
 
 import javax.naming.OperationNotSupportedException;
 
-import org.iesalandalus.programacion.reservasaulas.modelo.ModeloReservasAulas;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Aula;
+import org.iesalandalus.programacion.reservasaulas.modelo.ficheros.ModeloReservasAulas;
 
 /**
  * Clase que guarda y define las operaciones que se pueden realizar sobre un

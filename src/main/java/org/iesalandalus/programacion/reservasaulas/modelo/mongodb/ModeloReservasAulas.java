@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.reservasaulas.modelo;
+package org.iesalandalus.programacion.reservasaulas.modelo.mongodb;
 
 import java.util.List;
 
@@ -6,13 +6,15 @@ import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.reservasaulas.controlador.ControladorReservasAulas;
 import org.iesalandalus.programacion.reservasaulas.controlador.IControladorReservasAulas;
-import org.iesalandalus.programacion.reservasaulas.modelo.dao.Aulas;
-import org.iesalandalus.programacion.reservasaulas.modelo.dao.Profesores;
-import org.iesalandalus.programacion.reservasaulas.modelo.dao.Reservas;
+import org.iesalandalus.programacion.reservasaulas.modelo.IModeloReservasAulas;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Aula;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Profesor;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Reserva;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Permanencia;
+import org.iesalandalus.programacion.reservasaulas.modelo.mongodb.dao.Aulas;
+import org.iesalandalus.programacion.reservasaulas.modelo.mongodb.dao.Profesores;
+import org.iesalandalus.programacion.reservasaulas.modelo.mongodb.dao.Reservas;
+import org.iesalandalus.programacion.reservasaulas.modelo.mongodb.utilidades.MongoDB;
 
 /**
  *
@@ -38,6 +40,7 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	 * Constructor de la clase. Crea los distintos atributos de la clase.
 	 */
 	public ModeloReservasAulas() {
+		MongoDB.establecerConexion();
 		this.profesores = new Profesores();
 		this.aulas = new Aulas();
 		this.reservas = new Reservas();
@@ -120,14 +123,14 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	 * Lee de fichero las aulas guardadas. Si el fichero no existe lo crea.
 	 */
 	public void leerAulas() {
-		aulas.leer();
+		//aulas.leer();
 	}
 
 	/**
 	 * Escribe en fichero las aulas guardadas.
 	 */
 	public void escribirAulas() {
-		aulas.escribir();
+		//aulas.escribir();
 	}
 
 	/**
@@ -210,14 +213,14 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	 * Lee de fichero los profesores guardados. Si el fichero no existe lo crea.
 	 */
 	public void leerProfesores() {
-		profesores.leer();
+		//profesores.leer();
 	}
 
 	/**
 	 * Escribe en fichero los profesores guardados.
 	 */
 	public void escribirProfesores() {
-		profesores.escribir();
+		//profesores.escribir();
 	}
 
 	/**
@@ -357,14 +360,14 @@ public class ModeloReservasAulas implements IModeloReservasAulas {
 	 * Lee de fichero las reservas guardadas. Si el fichero no existe lo crea.
 	 */
 	public void leerReservas() {
-		reservas.leer();
+		//reservas.leer();
 	}
 
 	/**
 	 * Escribe en fichero las reservas guardadas.
 	 */
 	public void escribirReservas() {
-		reservas.escribir();
+		//reservas.escribir();
 	}
 
 }
