@@ -76,6 +76,8 @@ public class ControladorInsertarAula implements Initializable {
 			aulas.add(aula);
 			Dialogos.mostrarDialogoInformacion("Nueva Aula", "Aula insertada correctamente");
 			escenario.close();
+		} catch (NumberFormatException n) {
+			Dialogos.mostrarDialogoError("Aula", "El número de puestos del aula no es correcto");
 		} catch(IllegalArgumentException | OperationNotSupportedException e) {
 			Dialogos.mostrarDialogoError("Aula", e.getMessage());
 		}

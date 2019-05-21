@@ -402,6 +402,8 @@ public class ControladorVentanaPrincipal implements Initializable{
 			escenario.setScene(escena);
 			escenario.setTitle("Insertar reserva");
 			escenario.showAndWait();
+			reservas.setAll(controladorMVC.getReservas());
+			tvReservas.setItems(reservas);
 		} catch (IOException e) {
 			Logger.getLogger(ControladorVentanaPrincipal.class.getName()).log(Level.SEVERE, null, e);
 		} catch (Exception e) {
@@ -430,6 +432,8 @@ public class ControladorVentanaPrincipal implements Initializable{
 			escenario.setScene(escena);
 			escenario.setTitle("Insertar reserva");
 			escenario.showAndWait();
+			reservas.setAll(controladorMVC.getReservas());
+			tvReservas.setItems(reservas);
 		} catch (IOException e) {
 			Logger.getLogger(ControladorVentanaPrincipal.class.getName()).log(Level.SEVERE, null, e);
 		} catch (Exception e) {
