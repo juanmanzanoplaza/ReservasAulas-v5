@@ -16,7 +16,7 @@ import javafx.stage.WindowEvent;
  * Clase principal de la vista gráfica
  * 
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
 public class VistaReservasAulas extends Application implements IVistaReservasAulas{

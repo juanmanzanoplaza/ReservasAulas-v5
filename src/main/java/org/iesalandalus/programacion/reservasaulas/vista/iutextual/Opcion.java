@@ -8,7 +8,7 @@ import org.iesalandalus.programacion.reservasaulas.vista.IVistaReservasAulas;
  *
  * @see VistaReservasAulas
  * @author Juan Antonio Manzano Plaza
- * @version 3
+ * @version 5
  *
  */
 public enum Opcion {

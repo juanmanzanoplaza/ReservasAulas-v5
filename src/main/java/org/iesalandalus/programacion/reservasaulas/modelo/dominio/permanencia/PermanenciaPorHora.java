@@ -13,9 +13,10 @@ import java.util.Objects;
  * 
  * @see Permanencia
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
+@SuppressWarnings("serial")
 public class PermanenciaPorHora extends Permanencia implements Serializable {
 
 	private static final int PUNTOS = 3;

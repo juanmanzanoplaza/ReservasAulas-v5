@@ -20,7 +20,7 @@ import static com.mongodb.client.model.Filters.eq;
  * @see Profesor
  * @see ModeloReservasAulas
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
 public class Profesores {
@@ -36,10 +36,9 @@ public class Profesores {
 	}
 
 	/**
-	 * Obtiene todos los profesores de la colección actual. Realiza una copia para
-	 * evitar aliasing
+	 * Obtiene todos los profesores de la colección actual.
 	 *
-	 * @return una copia de la colección
+	 * @return la colección de profesores
 	 */
 	public List<Profesor> getProfesores() {
 		List<Profesor> profesores = new ArrayList<>();
@@ -109,7 +108,7 @@ public class Profesores {
 	/**
 	 * Obtiene las salidas de todos los profesores de la colección
 	 *
-	 * @return la salida de los profesores
+	 * @return una lista de strings
 	 */
 	public List<String> representar() {
 		List<String> representar = new ArrayList<String>();

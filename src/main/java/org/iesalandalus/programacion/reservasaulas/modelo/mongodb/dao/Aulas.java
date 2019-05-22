@@ -20,7 +20,7 @@ import static com.mongodb.client.model.Filters.eq;
  * @see Aula
  * @see ModeloReservasAulas
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
 public class Aulas {
@@ -29,7 +29,7 @@ public class Aulas {
 	private MongoCollection<Document> coleccionAulas;
 
 	/**
-	 * Constructor por defecto. Inicializa la colección.
+	 * Constructor por defecto.
 	 */
 	public Aulas() {
 		coleccionAulas = MongoDB.getBD().getCollection(COLECCION);
@@ -38,7 +38,7 @@ public class Aulas {
 	/**
 	 * Obtiene todas las aulas de la colección actual
 	 *
-	 * @return una copia de la colección
+	 * @return la colección de aulas
 	 */
 	public List<Aula> getAulas() {
 		List<Aula> aulas = new ArrayList<>();
@@ -110,7 +110,7 @@ public class Aulas {
 	/**
 	 * Obtiene las salidas de todas las aulas de la colección
 	 *
-	 * @return la salida de las aulas
+	 * @return una lista de strings
 	 */
 	public List<String> representar() {
 		List<String> representar = new ArrayList<String>();

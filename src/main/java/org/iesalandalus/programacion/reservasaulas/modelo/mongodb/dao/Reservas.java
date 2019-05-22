@@ -14,12 +14,23 @@ import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Reserva;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Permanencia;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.PermanenciaPorHora;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.PermanenciaPorTramo;
+import org.iesalandalus.programacion.reservasaulas.modelo.ficheros.ModeloReservasAulas;
 import org.iesalandalus.programacion.reservasaulas.modelo.mongodb.utilidades.MongoDB;
 
 import com.mongodb.client.MongoCollection;
 import static com.mongodb.client.model.Filters.and;
 import static com.mongodb.client.model.Filters.eq;
 
+/**
+ * Clase que guarda y define las operaciones que se pueden realizar sobre un
+ * conjunto de reservas
+ *
+ * @see Reserva
+ * @see ModeloReservasAulas
+ * @author Juan Antonio Manzano Plaza
+ * @version 5
+ *
+ */
 public class Reservas {
 	
 	private static final float MAX_PUNTOS_PROFESOR_MES = 200.0f;
@@ -27,10 +38,18 @@ public class Reservas {
 	
 	private MongoCollection<Document> coleccionReservas;
 	
+	/**
+	 * Constructor de la clase
+	 */
 	public Reservas() {
 		coleccionReservas = MongoDB.getBD().getCollection(COLECCION);
 	}
-		
+	
+	/**
+	 * Obtiene todas las reservas de la colección actual.
+	 * 
+	 * @return la colección de reservas
+	 */
 	public List<Reserva> getReservas() {
 		List<Reserva> reservas = new ArrayList<>();
 		for (Document documentoReserva : coleccionReservas.find()) {
@@ -39,10 +58,22 @@ public class Reservas {
 		return reservas;
 	}
 	
+	/**
+	 * Obtiene el número de reservas de la colección
+	 * 
+	 * @return el número de reservas
+	 */
 	public int getNumReservas() {
 		return (int)coleccionReservas.countDocuments();
 	}
 	
+	/**
+	 * Guarda una reserva en la colección
+	 * 
+	 * @param reserva la reserva a guardar
+	 * @throws IllegalArgumentException si la reserva es nula
+	 * @throws OperationNotSupportedException si la reserva ya existe o no se puede realizar
+	 */
 	public void insertar(Reserva reserva) throws OperationNotSupportedException {
 		if (reserva == null) {
 			throw new IllegalArgumentException("No se puede realizar una reserva nula.");
@@ -71,6 +102,11 @@ public class Reservas {
 		}
 	}
 	
+	/**
+	 * Método privado que comprueba si el mes de la reserva es correcto
+	 * @param reserva la reserva cuya fecha hay que comprobar
+	 * @return true si la reserva se puede realizar para esa fecha, false si no
+	 */
 	private boolean esMesSiguienteOPosterior(Reserva reserva) {
 		LocalDate diaReserva = reserva.getPermanencia().getDia();
 		LocalDate dentroDeUnMes = LocalDate.now().plusMonths(1);
@@ -78,6 +114,11 @@ public class Reservas {
 		return diaReserva.isAfter(primerDiaMesSiguiente) || diaReserva.equals(primerDiaMesSiguiente);
 	}
 	
+	/**
+	 * Método privado que obtiene los puntos que se gastarían al realizar esa reserva
+	 * @param reserva la reserva que se quiere comprobar
+	 * @return el número de puntos gastados en esa reserva
+	 */
 	private float getPuntosGastadosReserva(Reserva reserva) {
 		float puntosGastados = 0;
 		for (Reserva reservaProfesor : getReservasProfesorMes(reserva.getProfesor(), reserva.getPermanencia().getDia())) {
@@ -86,6 +127,12 @@ public class Reservas {
 		return puntosGastados + reserva.getPuntos();
 	}
 	
+	/**
+	 * Método privado que obtiene las reservas realizadas por el profesor durante ese mes
+	 * @param profesor el profesor cuyas reservas hay que obtener
+	 * @param mes el mes de las reservas
+	 * @return una lista de reservas
+	 */
 	private List<Reserva> getReservasProfesorMes(Profesor profesor, LocalDate mes) {
 		if (profesor == null) {
 			throw new IllegalArgumentException("No se pueden buscar reservas de un profesor nulo.");
@@ -102,6 +149,12 @@ public class Reservas {
 		return reservasProfesor;
 	}
 	
+	/**
+	 * Método privado que obtiene una reserva realizada sobre un aula un día concreto
+	 * @param aula el aula del que buscamos reservas
+	 * @param dia el día que el aula ha sido reservada
+	 * @return una reserva
+	 */
 	private Reserva getReservaAulaDia(Aula aula, LocalDate dia) {
 		if (dia == null) {
 			throw new IllegalArgumentException("No se puede buscar reserva para un día nulo.");
@@ -116,6 +169,11 @@ public class Reservas {
 		return null;
 	}
 	
+	/**
+	 * Busca una reserva en la colección
+	 * @param reserva la reserva a buscar
+	 * @return la reserva buscada o null si no la encuentra
+	 */
 	public Reserva buscar(Reserva reserva) {
 		Bson filtroPermanencia = null;
 		if (reserva.getPermanencia() instanceof PermanenciaPorHora) {
@@ -134,6 +192,12 @@ public class Reservas {
 		return MongoDB.obtenerReservaDesdeDocumento(documentoReserva);
 	}
 	
+	/**
+	 * Borra una reserva de la colección
+	 * @param reserva la reserva a borrar
+	 * @throws IllegalArgumentException si la reserva es nula
+	 * @throws OperationNotSupportedException si la reserva no existe
+	 */
 	public void borrar(Reserva reserva) throws OperationNotSupportedException {
 		if (reserva == null) {
 			throw new IllegalArgumentException("No se puede anular una reserva nula.");
@@ -162,6 +226,10 @@ public class Reservas {
 		}
 	}
 	
+	/**
+	 * Obtiene las salidas de todas las reservas de la colección
+	 * @return una lista de strings
+	 */
 	public List<String> representar() {
 		List<String> representacion = new ArrayList<>();
 		for (Reserva reserva: getReservas()) {
@@ -170,6 +238,12 @@ public class Reservas {
 		return representacion;
 	}
 	
+	/**
+	 * Obtiene las reservas a nombre de un profesor
+	 * @param profesor el profesor que realiza las reservas
+	 * @return una lista de reservas
+	 * @throws IllegalArgumentException si el profesor es nulo
+	 */
 	public List<Reserva> getReservasProfesor(Profesor profesor) {
 		if (profesor == null) {
 			throw new IllegalArgumentException("No se pueden buscar reservas de un profesor nulo.");
@@ -181,6 +255,12 @@ public class Reservas {
 		return reservasProfesor;
 	}
 	
+	/**
+	 * Obtiene las reservas realizadas sobre un aula
+	 * @param aula el aula reservada
+	 * @return una lista de reservas
+	 * @throws IllegalArgumentException si el aula es nula
+	 */
 	public List<Reserva> getReservasAula(Aula aula) {
 		if (aula == null) {
 			throw new IllegalArgumentException("No se pueden buscar reservas de un aula nula.");
@@ -192,6 +272,12 @@ public class Reservas {
 		return reservasAula;
 	}
 	
+	/**
+	 * Obtiene las reservas realizadas para una permanencia concreta
+	 * @param permanencia la permanencia de las reservas
+	 * @return una lista de reservas
+	 * @throws IllegalArgumentException si la permanencia es nula
+	 */
 	public List<Reserva> getReservasPermanencia(Permanencia permanencia) {
 		if (permanencia == null) {
 			throw new IllegalArgumentException("No se pueden buscar reservas de una permanencia nula.");
@@ -215,6 +301,13 @@ public class Reservas {
 		return reservasPermanencia;
 	}
 	
+	/**
+	 * Consulta si un aula está disponible para una permanencia dada
+	 * @param aula el aula que se quiere comprobar
+	 * @param permanencia la fecha que se quiere comprobar
+	 * @return true si el aula está disponible, false si no
+	 * @throws IllegalArgumentException si el aula o la permanencia son nulas
+	 */
 	public boolean consultarDisponibilidad(Aula aula, Permanencia permanencia) {
 		if (aula == null) {
 			throw new IllegalArgumentException("No se puede consultar la disponibilidad de un aula nula.");

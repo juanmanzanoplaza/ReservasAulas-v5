@@ -11,9 +11,10 @@ import java.time.format.DateTimeParseException;
  * @see PermanenciaPorHora
  * @see PermanenciaPorTramo
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
+@SuppressWarnings("serial")
 public abstract class Permanencia implements Serializable {
 
 	protected LocalDate dia;

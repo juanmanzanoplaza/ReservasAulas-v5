@@ -13,7 +13,7 @@ import org.iesalandalus.programacion.utilidades.Entrada;
  * @see VistaReservasAulas
  * @see Opcion
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
 public class Consola {

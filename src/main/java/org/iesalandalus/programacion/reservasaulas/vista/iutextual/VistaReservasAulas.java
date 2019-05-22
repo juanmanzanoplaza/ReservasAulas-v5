@@ -21,7 +21,7 @@ import org.iesalandalus.programacion.reservasaulas.vista.IVistaReservasAulas;
  *
  * @see ModeloReservasAulas
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
 public class VistaReservasAulas implements IVistaReservasAulas {
@@ -352,7 +352,7 @@ public class VistaReservasAulas implements IVistaReservasAulas {
 	}
 
 	/**
-	 * Ejecuta la orden listarReservasProfesor de Opcion llamando al m�todo
+	 * Ejecuta la orden listarReservasProfesor de Opcion llamando al método
 	 * correspondiente de ModeloReservasAulas
 	 */
 	public void listarReservasProfesor() {

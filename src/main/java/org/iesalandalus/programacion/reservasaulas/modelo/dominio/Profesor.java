@@ -9,9 +9,10 @@ import java.util.regex.Pattern;
  * Clase que representa un profesor de un instituto
  *
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
+@SuppressWarnings("serial")
 public class Profesor implements Serializable {
 
 	private static final String ER_TELEFONO = "^[69][0-9]{8}$";

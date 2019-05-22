@@ -14,8 +14,9 @@ import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Pe
  * @see Aula
  * @see Permanencia
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  */
+@SuppressWarnings("serial")
 public class Reserva implements Serializable {
 
 	private Profesor profesor;

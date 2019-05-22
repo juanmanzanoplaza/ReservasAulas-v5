@@ -16,7 +16,6 @@ import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Pe
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.PermanenciaPorTramo;
 import org.iesalandalus.programacion.reservasaulas.vista.iugrafica.utilidades.Dialogos;
 
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -30,7 +29,6 @@ import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -38,7 +36,7 @@ import javafx.stage.Stage;
  * Clase controladora del fxml de la VentanaPrincipal
  *
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
 public class ControladorVentanaPrincipal implements Initializable{
@@ -394,6 +392,7 @@ public class ControladorVentanaPrincipal implements Initializable{
 			Parent raiz = loader.load();
 			ControladorInsertarReserva controlador = loader.getController();
 			controlador.setControladorMVC(controladorMVC);
+			controlador.setReservas(reservas);
 			if(aula!=null)
 				controlador.setAula(aula);
 			Scene escena = new Scene(raiz);
@@ -424,6 +423,7 @@ public class ControladorVentanaPrincipal implements Initializable{
 			Parent raiz = loader.load();
 			ControladorInsertarReserva controlador = loader.getController();
 			controlador.setControladorMVC(controladorMVC);
+			controlador.setReservas(reservas);
 			if(profesor!=null)
 				controlador.setProfesor(profesor);
 			Scene escena = new Scene(raiz);

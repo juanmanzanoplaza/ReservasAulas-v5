@@ -2,9 +2,6 @@ package org.iesalandalus.programacion.reservasaulas.vista.iugrafica.controladore
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import javax.naming.OperationNotSupportedException;
 
 import org.iesalandalus.programacion.reservasaulas.controlador.IControladorReservasAulas;
@@ -23,7 +20,7 @@ import javafx.stage.Stage;
  * Controlador de la ventana de la interfaz gráfica InsertarAula.fxml
  * 
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
 public class ControladorInsertarAula implements Initializable {

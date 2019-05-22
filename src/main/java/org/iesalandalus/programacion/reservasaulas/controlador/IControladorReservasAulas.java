@@ -15,7 +15,7 @@ import org.iesalandalus.programacion.reservasaulas.modelo.dominio.permanencia.Pe
  *
  * @see ControladorReservasAulas
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
 public interface IControladorReservasAulas {

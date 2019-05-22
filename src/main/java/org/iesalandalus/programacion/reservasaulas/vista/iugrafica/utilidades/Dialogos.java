@@ -14,7 +14,7 @@ import javafx.stage.Stage;
  * Clase que crea los diálogos de la aplicación
  * 
  * 
- * @version 4
+ * @version 5
  *
  */
 public class Dialogos {

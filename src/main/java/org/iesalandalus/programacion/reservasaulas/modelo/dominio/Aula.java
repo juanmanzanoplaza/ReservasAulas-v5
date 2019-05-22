@@ -7,9 +7,10 @@ import java.util.Objects;
  * Clase que representa un aula de un instituto
  *
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
+@SuppressWarnings("serial")
 public class Aula implements Serializable {
 
 	private static final float PUNTOS_POR_PUESTO = 0.5f;

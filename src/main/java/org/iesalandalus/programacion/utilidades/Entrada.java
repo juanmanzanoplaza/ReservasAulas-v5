@@ -21,7 +21,7 @@ public class Entrada {
 	}
 
 	/**
-	 * M�todo est�tico que lee una cadena por teclado
+	 * Método estático que lee una cadena por teclado
 	 * 
 	 * @return la cadena leída
 	 */
@@ -98,7 +98,7 @@ public class Entrada {
 	}
 
 	/**
-	 * M�todo estático que lee un real de doble precisión (double) por teclado y se
+	 * Método estático que lee un real de doble precisión (double) por teclado y se
 	 * asegura que el valor introducido es compatible con un real de doble precisión
 	 * 
 	 * @return el real de doble precisión leído

@@ -16,10 +16,9 @@ import org.iesalandalus.programacion.reservasaulas.vista.iutextual.VistaReservas
  * Clase controlador. Tiene el modelo y la vista de la aplicación como
  * atributos, y llama a los métodos del que corresponda de cada uno.
  *
- * @see ModeloReservasAulas
  * @see VistaReservasAulas
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
 public class ControladorReservasAulas implements IControladorReservasAulas {
@@ -278,6 +277,4 @@ public class ControladorReservasAulas implements IControladorReservasAulas {
 	public boolean consultarDisponibilidad(Aula aula, Permanencia permanencia) throws IllegalArgumentException {
 		return modelo.consultarDisponibilidad(aula, permanencia);
 	}
-
-
 }

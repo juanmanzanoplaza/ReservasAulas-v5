@@ -2,13 +2,7 @@ package org.iesalandalus.programacion.reservasaulas.vista.iugrafica.controladore
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-import java.util.Observable;
 import java.util.ResourceBundle;
-import javax.naming.OperationNotSupportedException;
-
 import org.iesalandalus.programacion.reservasaulas.controlador.IControladorReservasAulas;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Aula;
 import org.iesalandalus.programacion.reservasaulas.modelo.dominio.Profesor;
@@ -36,7 +30,7 @@ import javafx.util.Callback;
  * Controlador del fichero fxml InsertarReserva
  * 
  * @author Juan Antonio Manzano Plaza
- * @version 4
+ * @version 5
  *
  */
 public class ControladorInsertarReserva implements Initializable {
@@ -229,7 +223,7 @@ public class ControladorInsertarReserva implements Initializable {
 				Dialogos.mostrarDialogoInformacion("Realizar reserva", "Reserva realizada correctamente");
 				escenario.close();
 			} catch (Exception e) {
-				Dialogos.mostrarDialogoError("Realizar reserva", e.getMessage());
+				Dialogos.mostrarDialogoError("Realizar reserva", "error en rbhora");
 			}
 		}
 		
@@ -242,11 +236,11 @@ public class ControladorInsertarReserva implements Initializable {
 					Dialogos.mostrarDialogoInformacion("Realizar reserva", "Reserva realizada correctamente");					
 					escenario.close();
 				} catch (Exception e) {
-					Dialogos.mostrarDialogoError("Realizar reserva", e.getMessage());
+					Dialogos.mostrarDialogoError("Realizar reserva", "error en rbmanana");
 					error = true;
 				}
 			}
-			if(!error && tramoTipo == rbTarde) {
+			if(tramoTipo == rbTarde) {
 				try {
 					reserva = new Reserva(profesor, aula, new PermanenciaPorTramo(dia, Tramo.TARDE));
 					controladorMVC.realizarReserva(reserva);
@@ -254,7 +248,7 @@ public class ControladorInsertarReserva implements Initializable {
 					Dialogos.mostrarDialogoInformacion("Realizar reserva", "Reserva realizada correctamente");
 					escenario.close();
 				} catch (Exception e) {
-					Dialogos.mostrarDialogoError("Realizar reserva", e.getMessage());
+					Dialogos.mostrarDialogoError("Realizar reserva", "error en rbTarde");
 					error = true;
 				}
 			}
